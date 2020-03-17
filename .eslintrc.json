@@ -41,7 +41,7 @@
     "linebreak-style": 0,
     "comma-dangle": 0,
     "react/jsx-filename-extension": 0,
-    "no-console": "error",
+    "no-console": "off",
     "curly": [
       "error",
       "multi-line"
