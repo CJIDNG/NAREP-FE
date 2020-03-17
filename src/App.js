@@ -1,16 +1,10 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import SignUp from './components/signup/signup.component';
+import BaseRoute from './routes/baseRoutes';
+
 import './App.css';
 
 const App = () => (
-  <Switch>
-    <Route
-      exact
-      path="/signup"
-      component={SignUp}
-    />
-  </Switch>
+  <BaseRoute />
 );
 
 export default App;
