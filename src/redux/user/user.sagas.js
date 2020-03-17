@@ -1,6 +1,7 @@
 import {
   call, put, takeLatest, all
 } from 'redux-saga/effects';
+<<<<<<< HEAD
 import { toast } from 'react-toastify';
 import { push } from 'react-router-redux';
 import jwtDecode from 'jwt-decode';
@@ -13,6 +14,16 @@ import {
 export function* signUpUser({ payload }) {
   try {
     const authUser = yield call(API_REQUEST.signupUser, payload);
+=======
+import SIGNUP_REQUEST from './user.requests';
+import UserActionTypes from './user.types';
+import { signUpFailure, signUpSuccess } from './user.action';
+
+
+export function* signUpUser({ payload }) {
+  try {
+    const authUser = yield call(SIGNUP_REQUEST.signupUser, payload);
+>>>>>>> created component for signup
     yield put(signUpSuccess(authUser));
   } catch (error) {
     yield put(signUpFailure(error));
@@ -22,6 +33,7 @@ export function* onSignupStart() {
   yield takeLatest(UserActionTypes.SIGNUP_START, signUpUser);
 }
 
+<<<<<<< HEAD
 export function* fetchLogin({ payload, history }) {
   try {
     const response = yield call(API_REQUEST.signinUser, payload);
@@ -56,5 +68,10 @@ export function* userSagas() {
   yield all([
     call(onSignupStart),
     call(onEmailSigninStart),
+=======
+export function* userSagas() {
+  yield all([
+    call(onSignupStart),
+>>>>>>> created component for signup
   ]);
 }

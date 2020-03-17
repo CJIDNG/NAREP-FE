@@ -1,4 +1,5 @@
 const UserActionTypes = {
+<<<<<<< HEAD
   SIGNUP_START: 'SIGNUP_START',
   SIGNUP_SUCCESS: 'SIGNUP_SUCCESS',
   SIGNUP_FAILURE: 'SIGNUP_FAILURE',
@@ -7,5 +8,12 @@ const UserActionTypes = {
   LOGIN_RESET: 'LOGIN_RESET',
   LOGIN_ERROR: 'LOGIN_ERROR',
   ERROR_RESET: 'ERROR_RESET',
+=======
+  SET_CURRENT_USER: 'SET_CURRENT_USER',
+  SIGNUP_START: 'SIGNUP_START',
+  SIGNUP_SUCCESS: 'SIGNUP_SUCCESS',
+  SIGNUP_FAILURE: 'SIGNUP_FAILURE',
+
+>>>>>>> created component for signup
 };
 export default UserActionTypes;
