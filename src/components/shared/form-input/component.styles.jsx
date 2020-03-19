@@ -10,12 +10,12 @@ const SpanStyle = css`
   font-size:1.5rem;
 
 `;
-export const SignUpContainer = styled.div`
+export const Container = styled.div`
   display: flex;
   height:100vh;
 `;
 
-export const SignUpTitle = styled.h2`
+export const Title = styled.h2`
   margin: 10px 0;
   text-align:center;
   font-size:2rem;

@@ -12,7 +12,6 @@ export const signUpFailure = (error) => ({
   type: UserActionTypes.SIGNUP_FAILURE,
   payload: error.response.data.errors
 });
-<<<<<<< HEAD
 
 // export const signInStart = (userCredentials) => ({
 //   type: UserActionTypes.SIGNIN_START,
@@ -30,5 +29,3 @@ export const signUpFailure = (error) => ({
 export const requestLogin = (payload) => ({ type: UserActionTypes.LOGIN_IN_PROGRESS, payload });
 export const loginUser = (payload) => ({ type: UserActionTypes.LOGIN_USER, payload });
 export const handleLoginError = (payload) => ({ type: UserActionTypes.LOGIN_ERROR, payload });
-=======
->>>>>>> created component for signup
