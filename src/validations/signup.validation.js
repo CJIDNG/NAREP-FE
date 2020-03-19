@@ -16,7 +16,7 @@ export default (validator) => [{
   field: 'password',
   check: validator.isLength,
   args: [{
-    min: 8,
+    min: 3,
     max: 15
   }],
   message: 'Password must be between 8 - 15 characters long'

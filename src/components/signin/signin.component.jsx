@@ -1,8 +1,12 @@
-/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { signUpStart } from '../../redux/user/user.action';
+import { withRouter } from 'react-router-dom';
+// import { toast } from 'react-toastify';
+// import { createStructuredSelector } from 'reselect';
+// import { selectCurrentUser, seclectAuthError } from '../../redux/user/user.selectors';
+import { requestLogin } from '../../redux/user/user.action';
 import Validator from '../../utils/validator';
 import FormInput from '../shared/form-input/form-input.component';
 import CustomButton from '../shared/custom-button/custom-button.component';
@@ -11,25 +15,23 @@ import {
   Container, Title, FormContainer, InputErrors, ToSignin, LinkToSignin
 } from '../shared/form-input/component.styles';
 
-const SignUp = ({ signUpStart: createUserRequest }) => {
+
+const SignIn = ({
+  requestLogin: loginCurrentUser, history, user
+}) => {
   const [userCredentials, setUserCredentials] = useState({
-    username: '',
     email: '',
     password: '',
-    confirmPassword: '',
+
   });
   const [userErrors, setUserErrors] = useState({
     errors: {
-      username: '',
       email: '',
       password: '',
-      confirmPassword: ''
     }
   });
 
-  const {
-    username, email, password, confirmPassword
-  } = userCredentials;
+  const { email, password } = userCredentials;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -42,35 +44,30 @@ const SignUp = ({ signUpStart: createUserRequest }) => {
 
   const formValid = (formErrors) => !Object.values(formErrors).filter((val) => !!val).length;
   const { errors } = userErrors;
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (formValid(errors)) {
-      createUserRequest({
-        username, email, password, confirmPassword
+      loginCurrentUser({
+        email, password
       });
     }
-    return false;
   };
-
+  const error = Object.keys(user.error).map((eachError) => (
+    <div key={eachError} className="error">{ user.error[eachError] }</div>
+  ));
   return (
     <Container>
+
       <FormContainer onSubmit={handleSubmit}>
         <Title>Register Account</Title>
-        <FormInput
-          type="text"
-          name="username"
-          value={username}
-          onChange={handleChange}
-          label="Username"
-        />
-        <InputErrors>{ errors.username }</InputErrors>
+        <InputErrors>{ error }</InputErrors>
         <FormInput
           type="email"
           name="email"
           value={email}
           onChange={handleChange}
           label="Email"
+          required
 
         />
         <InputErrors>{ errors.email }</InputErrors>
@@ -81,32 +78,32 @@ const SignUp = ({ signUpStart: createUserRequest }) => {
           value={password}
           onChange={handleChange}
           label="Password"
+          required
         />
         <InputErrors>{ errors.password }</InputErrors>
-
-        <FormInput
-          type="password"
-          name="confirmPassword"
-          value={confirmPassword}
-          onChange={handleChange}
-          label="Confirm Password"
-
-        />
-        <InputErrors>{ errors.confirmPassword }</InputErrors>
-        <CustomButton type="submit">Create my account</CustomButton>
-
+        <CustomButton type="submit">Sign in</CustomButton>
         <ToSignin>
-          Already have an account?
-          <LinkToSignin to="/signin">Sign in</LinkToSignin>
+          Do not have an account?
+          <LinkToSignin to="/signup">Sign Up</LinkToSignin>
         </ToSignin>
       </FormContainer>
     </Container>
   );
 };
-SignUp.propTypes = {
-  signUpStart: PropTypes.func.isRequired,
+SignIn.propTypes = {
+  requestLogin: PropTypes.func.isRequired,
+  currentUser: PropTypes.shape({}),
+  history: PropTypes.shape({}).isRequired,
+
 };
-const mapDispatchToProps = (dispatch) => ({
-  signUpStart: (userCredentials) => dispatch(signUpStart(userCredentials))
+SignIn.defaultProps = {
+  currentUser: PropTypes.null
+};
+const mapStateToProps = (state) => ({
+  user: state.user
 });
-export default connect(null, mapDispatchToProps)(SignUp);
+const mapDispatchToProps = (dispatch) => ({
+  requestLogin: (payload) => dispatch(requestLogin(payload))
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignIn));

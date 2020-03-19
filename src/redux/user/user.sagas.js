@@ -1,14 +1,16 @@
 import {
   call, put, takeLatest, all
 } from 'redux-saga/effects';
-import SIGNUP_REQUEST from './user.requests';
+import API_REQUEST from './user.requests';
 import UserActionTypes from './user.types';
-import { signUpFailure, signUpSuccess } from './user.action';
+import {
+  signUpFailure, signUpSuccess, handleLoginError, loginUser
+} from './user.action';
 
 
 export function* signUpUser({ payload }) {
   try {
-    const authUser = yield call(SIGNUP_REQUEST.signupUser, payload);
+    const authUser = yield call(API_REQUEST.signupUser, payload);
     yield put(signUpSuccess(authUser));
   } catch (error) {
     yield put(signUpFailure(error));
@@ -18,8 +20,37 @@ export function* onSignupStart() {
   yield takeLatest(UserActionTypes.SIGNUP_START, signUpUser);
 }
 
+export function* fetchLogin({ payload }) {
+  try {
+    const response = yield call(API_REQUEST.signinUser, payload);
+    const { data: { errors, user } } = response;
+    switch (response.status) {
+      case 404:
+        yield put({ type: UserActionTypes.LOGIN_RESET });
+        yield put(handleLoginError({ error: errors.message }));
+        return;
+      case 200:
+        localStorage.setItem('token', user.token);
+        yield put({ type: UserActionTypes.ERROR_RESET });
+        yield put(loginUser(user));
+        return;
+      default:
+        yield put({ type: UserActionTypes.LOGIN_RESET });
+    }
+  } catch (error) {
+    yield put({ type: UserActionTypes.LOGIN_RESET });
+    yield put(handleLoginError({ error: 'server error' }));
+  }
+}
+
+
+export function* onEmailSigninStart() {
+  yield takeLatest(UserActionTypes.LOGIN_IN_PROGRESS, fetchLogin);
+}
+
 export function* userSagas() {
   yield all([
     call(onSignupStart),
+    call(onEmailSigninStart),
   ]);
 }
