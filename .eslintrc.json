@@ -24,12 +24,12 @@
     "no-restricted-globals": 0,
     "jsx-a11y/label-has-for": 0,
     "jsx-a11y/label-has-associated-control": 0,
-    "no-nested-ternary": 0,
     "jsx-a11y/no-static-element-interactions": 0,
     "jsx-a11y/no-noninteractive-element-interactions": 0,
     "jsx-a11y/click-events-have-key-events": 0,
     "jsx-a11y/anchor-is-valid": 0,
-    "react/forbid-prop-types": 0,
+    // "react/prop-types": "off",
+    "react/forbid-prop-types": "off",
     "no-confusing-arrow": 0,
     "one-var": 0,
     "react/jsx-closing-tag-location": 0,
@@ -42,6 +42,12 @@
     "comma-dangle": 0,
     "react/jsx-filename-extension": 0,
     "no-console": "off",
+    "max-len": "off",
+    "react/destructuring-assignment": "off",
+    "import/no-unresolved": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-indent": "off",
     "curly": [
       "error",
       "multi-line"
@@ -49,12 +55,6 @@
     "function-paren-newline": [
       "error",
       "never"
-    ],
-    "import/no-unresolved": [
-      2,
-      {
-        "commonjs": true
-      }
     ],
     "no-shadow": [
       "error",

@@ -19,6 +19,7 @@ export function* onSignupStart() {
   yield takeLatest(UserActionTypes.SIGNUP_START, signUpUser);
 }
 
+
 export function* userSagas() {
   yield all([
     call(onSignupStart),
