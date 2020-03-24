@@ -1,11 +1,13 @@
 /* eslint-disable import/prefer-default-export */
 import SignUpPage from '../components/signup/signup.component';
 import SignInPage from '../components/signin/signin.component';
+import HomePage from '../pages/home/home.component';
 
 export const UnauthenticatedRoutes = {
   default: [{
     exact: true,
-    path: '/'
+    path: '/',
+    component: HomePage
   },
   {
     exact: true,
@@ -17,6 +19,5 @@ export const UnauthenticatedRoutes = {
     path: '/signin',
     component: SignInPage
   }
-
   ]
 };
