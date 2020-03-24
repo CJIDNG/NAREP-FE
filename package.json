@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "autoprefixer": "^9.7.4",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "autoprefixer": "^9.7.5",
     "axios": "^0.19.2",
     "debug": "^4.1.1",
     "express": "^4.17.1",
@@ -34,6 +34,7 @@
     "validator": "^12.2.0"
   },
   "scripts": {
+    "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
