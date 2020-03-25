@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+/* eslint-disable import/prefer-default-export */
+>>>>>>> restructure folder, added craco for imports
 import styled from 'styled-components';
 
 
@@ -12,6 +16,11 @@ export const HomeBannerContainer = styled.div`
       flex-direction:column;
       justify-content:center;
       align-items:center;
+<<<<<<< HEAD
+=======
+      width:50rem;
+      margin:2rem;
+>>>>>>> restructure folder, added craco for imports
   }
 `;
 
@@ -30,8 +39,13 @@ export const HomeBannerTextContainer = styled.div`
     }
 `;
 export const HomeBannerText = styled.p`
+<<<<<<< HEAD
   font-weight:500;
   font-size:1.5rem;
+=======
+  font-weight:bolder;
+  font-size:2rem;
+>>>>>>> restructure folder, added craco for imports
 
 `;
 export const HomeBannerImage = styled.img`

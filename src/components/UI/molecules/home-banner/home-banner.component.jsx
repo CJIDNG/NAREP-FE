@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 import CustomButton from '@Components/UI/atoms/custom-button/auth-button.component';
+=======
+import CustomButton from '@Atoms/custom-button/custom-button.component';
+>>>>>>> restructure folder, added craco for imports
 import {
   HomeBannerImage, HomeBannerContainer, HomeBannerText, HomeBannerTextContainer
 } from './home-banner.styles';

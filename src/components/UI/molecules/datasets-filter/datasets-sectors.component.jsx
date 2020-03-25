@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
-import { selectSectors } from '../../redux/datasets/datasets.selectors';
-import { fetchSectorsStarted } from '../../redux/datasets/datasets.actions';
+import { selectSectors } from '@Redux/datasets/datasets.selectors';
+import { fetchSectorsStarted } from '@Redux/datasets/datasets.actions';
 
-const DatasetFilter = ({ fetchSectorsStarted: getAllSectors, sectors }) => {
+
+const DatasetSectors = ({ fetchSectorsStarted: getAllSectors, sectors }) => {
   useEffect(() => {
     const fetchSectors = async () => {
       await getAllSectors();
@@ -22,7 +23,7 @@ const DatasetFilter = ({ fetchSectorsStarted: getAllSectors, sectors }) => {
     </div>
   );
 };
-DatasetFilter.propTypes = {
+DatasetSectors.propTypes = {
   fetchSectorsStarted: PropTypes.func.isRequired,
   sectors: PropTypes.array.isRequired
 };
@@ -32,4 +33,4 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = (dispatch) => ({
   fetchSectorsStarted: () => dispatch(fetchSectorsStarted())
 });
-export default connect(mapStateToProps, mapDispatchToProps)(DatasetFilter);
+export default connect(mapStateToProps, mapDispatchToProps)(DatasetSectors);
