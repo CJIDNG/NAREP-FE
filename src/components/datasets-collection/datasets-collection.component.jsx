@@ -7,13 +7,13 @@ import { selectItems } from '../../redux/datasets/datasets.selectors';
 import DataSetItem from '../single-datasets/single-dataset.component';
 import { fetchDatasetsStarted } from '../../redux/datasets/datasets.actions';
 
-const DatasetCollection = ({ fetchDatasetsStarted: getAllData, collections }) => {
+const DatasetCollection = ({ fetchDatasetsStarted: getAllDatasets, collections }) => {
   useEffect(() => {
-    const fetchTrendingArticles = async () => {
-      await getAllData();
+    const fetchDatasets = async () => {
+      await getAllDatasets();
     };
-    fetchTrendingArticles();
-  }, [getAllData]);
+    fetchDatasets();
+  }, [getAllDatasets]);
   return (
     <>
       { collections.map(({ id, ...otherCollectionProps }) => (

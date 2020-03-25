@@ -4,16 +4,19 @@ import { connect } from 'react-redux';
 import { Input } from 'semantic-ui-react';
 import { createStructuredSelector } from 'reselect';
 import DataSetCollection from '../datasets-collection/datasets-collection.component';
+import DatasetFilter from '../datasets-filter/datasets-filter.component';
 import { selectItemsCount } from '../../redux/datasets/datasets.selectors';
 
 const DatasetContainer = ({ collectionsCount }) => (
   <>
     <div className="flex mb-4 justify-center">
-      <div className="w-1/4 p-2 bg-gray-400 text-center m-4">.w-1/3</div>
+      <div className="w-auto p-2 m-4">
+        <DatasetFilter />
+      </div>
       <div className="w-1/2 p-2 m-4">
         <div className="flex flex-col">
           <Input icon="search" placeholder={`Search ${collectionsCount} datasets`} />
-          <div>
+          <div className="m-3">
             <span className="mr-3">
               { collectionsCount }
             </span>
