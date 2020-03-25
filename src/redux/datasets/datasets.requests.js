@@ -1,4 +1,4 @@
-import API_SERVICE from '../../utils/http/http';
+import API_SERVICE from '@Utils/http/http';
 
 export default {
   fetchDatasets: async () => {

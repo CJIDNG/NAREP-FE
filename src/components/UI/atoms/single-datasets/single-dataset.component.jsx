@@ -1,10 +1,9 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import UserProfileIcon from '../shared/Icons/user-profile.icon';
-import CalendarIcon from '../shared/Icons/calendar.icon';
-import FileIcon from '../shared/Icons/file.icon';
-import DownloadIcon from '../shared/Icons/download.icon';
+import UserProfileIcon from '../Icons/user-profile.icon';
+import CalendarIcon from '../Icons/calendar.icon';
+import FileIcon from '../Icons/file.icon';
+import DownloadIcon from '../Icons/download.icon';
 
 const DataSetItem = ({
   title, user: { username }, fileType, numberOfDownload, updatedAt,

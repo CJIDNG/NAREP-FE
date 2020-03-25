@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 // import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from './redux/store';
+import { store } from '@Redux/store';
 import App from './App';
 import './styles/tailwind.css';
 import * as serviceWorker from './serviceWorker';

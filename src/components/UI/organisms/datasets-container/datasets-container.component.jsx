@@ -3,9 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Input } from 'semantic-ui-react';
 import { createStructuredSelector } from 'reselect';
-import DataSetCollection from '../datasets-collection/datasets-collection.component';
-import DatasetFilter from '../datasets-filter/datasets-filter.component';
-import { selectItemsCount } from '../../redux/datasets/datasets.selectors';
+import DataSetCollection from '@Molecules/datasets-collection/datasets-collection.component';
+import DatasetFilter from '@Molecules/datasets-filter/datasets-filter.component';
+import { selectItemsCount } from '@Redux/datasets/datasets.selectors';
 
 const DatasetContainer = ({ collectionsCount }) => (
   <>

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 
 const subColor = 'grey';
-// const mainColor = 'black';
 
 const SpanStyle = css`
   padding-top:30px;

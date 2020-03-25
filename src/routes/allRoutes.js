@@ -1,8 +1,7 @@
-/* eslint-disable import/prefer-default-export */
-import SignUpPage from '../components/signup/signup.component';
-import SignInPage from '../components/signin/signin.component';
-import HomePage from '../pages/home/home.component';
-import DataSetsPage from '../pages/datasets/datasets.component';
+import SignUpPage from '@Pages/signup/signup.component';
+import SignInPage from '@Pages/signin/signin.component';
+import HomePage from '@Pages/home/home.component';
+import DataSetsPage from '@Pages/datasets/datasets.component';
 
 export const UnauthenticatedRoutes = {
   default: [{

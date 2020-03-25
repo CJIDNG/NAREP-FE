@@ -1,15 +1,14 @@
-/* eslint-disable no-console */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { signUpStart } from '../../redux/user/user.action';
-import Validator from '../../utils/validator';
-import FormInput from '../shared/form-input/form-input.component';
-import CustomButton from '../shared/custom-button/custom-button.component';
-import SignupValidation from '../../validations/signup.validation';
+import FormInput from '@Atoms/form-input/form-input.component';
+import CustomButton from '@Atoms/custom-button/custom-button.component';
+import SignupValidation from '@Utils/validations/signup.validation';
+import Validator from '@Utils/validator';
+import { signUpStart } from '@Redux/user/user.action';
 import {
   Container, Title, FormContainer, InputErrors, ToSignin, LinkToSignin
-} from '../shared/form-input/component.styles';
+} from '@Atoms/form-input/component.styles';
 
 const SignUp = ({ signUpStart: createUserRequest }) => {
   const [userCredentials, setUserCredentials] = useState({

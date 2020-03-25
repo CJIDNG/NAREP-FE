@@ -12,7 +12,6 @@ export function* fetchDataset() {
   try {
     const fetchedDatasets = yield call(API_REQUEST.fetchDatasets);
     yield put(fetchDatasetsSucceeded(fetchedDatasets.data.files));
-    console.log(fetchedDatasets);
   } catch (error) {
     yield put(fetchDatasetsFailed(error));
   }

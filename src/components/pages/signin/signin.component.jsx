@@ -1,19 +1,15 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-// import { toast } from 'react-toastify';
-// import { createStructuredSelector } from 'reselect';
-// import { selectCurrentUser, seclectAuthError } from '../../redux/user/user.selectors';
-import { requestLogin } from '../../redux/user/user.action';
-import Validator from '../../utils/validator';
-import FormInput from '../shared/form-input/form-input.component';
-import CustomButton from '../shared/custom-button/custom-button.component';
-import SignupValidation from '../../validations/signup.validation';
+import { requestLogin } from '@Redux/user/user.action';
+import Validator from '@Utils/validator';
+import FormInput from '@Atoms/form-input/form-input.component';
+import CustomButton from '@Atoms/custom-button/custom-button.component';
+import SigninValidation from '@Utils/validations/signup.validation';
 import {
   Container, Title, FormContainer, InputErrors, ToSignin, LinkToSignin
-} from '../shared/form-input/component.styles';
+} from '@Atoms/form-input/component.styles';
 
 
 const SignIn = ({
@@ -37,7 +33,7 @@ const SignIn = ({
     const { name, value } = event.target;
     const { errors, ...others } = userErrors;
     const newFields = { ...others, [name]: value };
-    const validatorErrors = new Validator(SignupValidation).validate(newFields);
+    const validatorErrors = new Validator(SigninValidation).validate(newFields);
     setUserErrors({ errors: { ...errors, [name]: validatorErrors[name] }, ...newFields });
     setUserCredentials({ ...userCredentials, [name]: value });
   };
@@ -94,6 +90,7 @@ SignIn.propTypes = {
   requestLogin: PropTypes.func.isRequired,
   currentUser: PropTypes.shape({}),
   history: PropTypes.shape({}).isRequired,
+  user: PropTypes.shape({}).isRequired,
 
 };
 SignIn.defaultProps = {

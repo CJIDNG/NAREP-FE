@@ -1,11 +1,10 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
-import { selectItems } from '../../redux/datasets/datasets.selectors';
-import DataSetItem from '../single-datasets/single-dataset.component';
-import { fetchDatasetsStarted } from '../../redux/datasets/datasets.actions';
+import { selectItems } from '@Redux/datasets/datasets.selectors';
+import DataSetItem from '@Atoms/single-datasets/single-dataset.component';
+import { fetchDatasetsStarted } from '@Redux/datasets/datasets.actions';
 
 const DatasetCollection = ({ fetchDatasetsStarted: getAllDatasets, collections }) => {
   useEffect(() => {
