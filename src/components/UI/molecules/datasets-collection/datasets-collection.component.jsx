@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import { selectItems } from '@Redux/datasets/datasets.selectors';
-import DataSetItem from '@Atoms/single-datasets/single-dataset.component';
+import DataSetItem from '@Components/UI/atoms/datasets-item/datasets-item.component';
 import { fetchDatasetsStarted } from '@Redux/datasets/datasets.actions';
 
 const DatasetCollection = ({ fetchDatasetsStarted: getAllDatasets, collections }) => {

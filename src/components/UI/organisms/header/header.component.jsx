@@ -1,30 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Input, Menu } from 'semantic-ui-react';
 import { Container } from './header.styles';
 
-const Header = () => {
-  const [state, setState] = useState({
-    activeItem: 'home'
-  });
-  const handleItemClick = (e, { name }) => setState({ activeItem: name });
-  const { activeItem } = state;
-  return (
+const Header = () => (
+  <>
     <Container>
-      <Menu secondary>
+      <Menu secondary className="mr-5">
         <Menu.Item
           name="home"
-          active={activeItem === 'home'}
-          onClick={handleItemClick}
+          as={Link}
+          to="/"
         />
         <Menu.Item
           name="datasets"
-          active={activeItem === 'datasets'}
-          onClick={handleItemClick}
+          as={Link}
+          to="/datasets"
+
         />
         <Menu.Item
           name="developers"
-          active={activeItem === 'developers'}
-          onClick={handleItemClick}
+          as={Link}
+          to="/"
+
         />
         <Menu.Menu position="right">
           <Menu.Item>
@@ -32,18 +30,21 @@ const Header = () => {
           </Menu.Item>
           <Menu.Item
             name="signin"
-            active={activeItem === 'signin'}
-            onClick={handleItemClick}
+            as={Link}
+            to="/signin"
+
           />
           <Menu.Item
             name="register"
-            active={activeItem === 'register'}
-            onClick={handleItemClick}
+            as={Link}
+            to="/signup"
+            color="red"
+
           />
         </Menu.Menu>
       </Menu>
     </Container>
-  );
-};
+  </>
+);
 
 export default Header;

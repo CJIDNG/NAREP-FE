@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import FormInput from '@Atoms/form-input/form-input.component';
-import CustomButton from '@Atoms/custom-button/custom-button.component';
-import SignupValidation from '@Utils/validations/signup.validation';
+import AuthButton from '@Components/UI/atoms/custom-button/auth-button.component';
+import SignupValidation from '@Utils/validations/auth.validations';
 import Validator from '@Utils/validator';
 import { signUpStart } from '@Redux/user/user.action';
 import {
@@ -92,7 +92,9 @@ const SignUp = ({ signUpStart: createUserRequest }) => {
 
         />
         <InputErrors>{ errors.confirmPassword }</InputErrors>
-        <CustomButton type="submit">Create my account</CustomButton>
+        <AuthButton>
+          Create my account
+        </AuthButton>
 
         <ToSignin>
           Already have an account?

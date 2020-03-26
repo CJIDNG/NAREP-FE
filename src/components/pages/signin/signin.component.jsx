@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom';
 import { requestLogin } from '@Redux/user/user.action';
 import Validator from '@Utils/validator';
 import FormInput from '@Atoms/form-input/form-input.component';
-import CustomButton from '@Atoms/custom-button/custom-button.component';
-import SigninValidation from '@Utils/validations/signup.validation';
+import AuthButton from '@Components/UI/atoms/custom-button/auth-button.component';
+import SigninValidation from '@Utils/validations/auth.validations';
 import {
   Container, Title, FormContainer, InputErrors, ToSignin, LinkToSignin
 } from '@Atoms/form-input/component.styles';
@@ -77,7 +77,7 @@ const SignIn = ({
           required
         />
         <InputErrors>{ errors.password }</InputErrors>
-        <CustomButton type="submit">Sign in</CustomButton>
+        <AuthButton>Sign in</AuthButton>
         <ToSignin>
           Do not have an account?
           <LinkToSignin to="/signup">Sign Up</LinkToSignin>

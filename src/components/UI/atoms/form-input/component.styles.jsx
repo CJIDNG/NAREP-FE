@@ -6,8 +6,7 @@ const subColor = 'grey';
 
 const SpanStyle = css`
   padding-top:30px;
-  font-size:1.5rem;
-
+  font-size:1rem;
 `;
 export const Container = styled.div`
   display: flex;
@@ -17,7 +16,7 @@ export const Container = styled.div`
 export const Title = styled.h2`
   margin: 10px 0;
   text-align:center;
-  font-size:2rem;
+  font-size:1.5rem;
   color:${subColor};
 `;
 export const FormContainer = styled.form`

@@ -17,4 +17,12 @@ export default {
       return error.response;
     }
   },
+  fetchSingleDataset: async (slug) => {
+    try {
+      const response = await API_SERVICE.get(`/files/${slug}`);
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  },
 };

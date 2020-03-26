@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 
 export const CustomButtonContainer = styled.button`
-  min-width: 165px;
-  width: 100%;
-  height: 5rem;
+  height: 4rem;
   letter-spacing: 0.5px;
-  line-height: 5rem;
   padding: 0 3.5rem 0 3.5rem;
   font-size: 1.5rem;
   text-transform: uppercase;
@@ -18,7 +15,9 @@ export const CustomButtonContainer = styled.button`
   border: none;
   margin:5rem 0; 
   border-radius:10rem;
-
+ @media only screen and (max-width: 800px) {
+  margin:3rem 0;
+    }
   &:hover {
     background-color: white;
     color: #27AE60;

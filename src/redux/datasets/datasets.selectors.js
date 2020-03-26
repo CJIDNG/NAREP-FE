@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 
 const selectDatasets = (state) => state.datasets;
+const selectSingleDataset = (state) => state.singleDataset;
 
 export const selectItems = createSelector([selectDatasets],
   (datasets) => datasets.datasets);
@@ -13,3 +14,6 @@ export const selectTags = createSelector([selectDatasets],
 
 export const selectSectors = createSelector([selectDatasets],
   (datasets) => datasets.sectors);
+
+export const selectDataset = createSelector([selectSingleDataset],
+  (singleDataset) => singleDataset);

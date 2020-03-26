@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomButton from '@Atoms/custom-button/custom-button.component';
+import CustomButton from '@Components/UI/atoms/custom-button/auth-button.component';
 import {
   HomeBannerImage, HomeBannerContainer, HomeBannerText, HomeBannerTextContainer
 } from './home-banner.styles';

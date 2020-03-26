@@ -8,6 +8,7 @@ import App from './App';
 import './styles/tailwind.css';
 import * as serviceWorker from './serviceWorker';
 import 'react-toastify/dist/ReactToastify.css';
+import './index.css';
 
 ReactDOM.render(<Provider store={store}>
   <BrowserRouter>

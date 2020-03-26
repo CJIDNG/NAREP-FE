@@ -13,8 +13,6 @@ export const HomeBannerContainer = styled.div`
       flex-direction:column;
       justify-content:center;
       align-items:center;
-      width:50rem;
-      margin:2rem;
   }
 `;
 
@@ -33,8 +31,8 @@ export const HomeBannerTextContainer = styled.div`
     }
 `;
 export const HomeBannerText = styled.p`
-  font-weight:bolder;
-  font-size:2rem;
+  font-weight:500;
+  font-size:1.5rem;
 
 `;
 export const HomeBannerImage = styled.img`
