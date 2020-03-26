@@ -1,21 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import UserProfileIcon from '../Icons/user-profile.icon';
-import CalendarIcon from '../Icons/calendar.icon';
-import FileIcon from '../Icons/file.icon';
-import DownloadIcon from '../Icons/download.icon';
+import { Link } from 'react-router-dom';
+import UserProfileIcon from '@Atoms/Icons/user-profile.icon';
+import CalendarIcon from '@Atoms/Icons//calendar.icon';
+import FileIcon from '@Atoms/Icons//file.icon';
+import DownloadIcon from '@Atoms/Icons//download.icon';
+import { handleDateFormat } from '@Utils/handleDateFormat';
 
 const DataSetItem = ({
-  title, user: { username }, fileType, numberOfDownload, updatedAt,
-}) => {
-  const handleDateFormat = (date) => {
-    const currentDatetime = new Date(date);
-    const formattedDate = `${currentDatetime.getDate()}-${currentDatetime.getMonth()
-      + 1}-${currentDatetime.getFullYear()}`;
-    return formattedDate;
-  };
-  return (
-    <>
+  title, user: { username }, fileType, numberOfDownload, updatedAt, slug
+}) => (
+    <Link to={`/datasets/${slug}`}>
       <div className="m-5 border border-gray-500 p-6">
         <h2 className="ml-5 mb-2 text-xl capitalize">
           { title }
@@ -39,9 +34,8 @@ const DataSetItem = ({
           </div>
         </div>
       </div>
-    </>
-  );
-};
+    </Link>
+);
 DataSetItem.propTypes = {
   title: PropTypes.string.isRequired,
   fileType: PropTypes.string.isRequired,

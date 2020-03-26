@@ -17,10 +17,13 @@ export const HomeBannerContainer = styled.div`
       justify-content:center;
       align-items:center;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       width:50rem;
       margin:2rem;
 >>>>>>> restructure folder, added craco for imports
+=======
+>>>>>>> created single dataset page
   }
 `;
 
@@ -39,14 +42,8 @@ export const HomeBannerTextContainer = styled.div`
     }
 `;
 export const HomeBannerText = styled.p`
-<<<<<<< HEAD
   font-weight:500;
   font-size:1.5rem;
-=======
-  font-weight:bolder;
-  font-size:2rem;
->>>>>>> restructure folder, added craco for imports
-
 `;
 export const HomeBannerImage = styled.img`
   flex-grow:1;

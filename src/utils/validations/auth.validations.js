@@ -6,20 +6,20 @@ export default (validator) => [{
 {
   field: 'username',
   args: [{
-    min: 2,
-    max: 20
+    min: 3,
+    max: 15
   }],
   check: validator.isLength,
-  message: 'Username must be between 2 - 15 characters long'
+  message: 'Username must be between 3 - 15 characters long'
 },
 {
   field: 'password',
   check: validator.isLength,
   args: [{
-    min: 3,
+    min: 6,
     max: 15
   }],
-  message: 'Password must be between 8 - 15 characters long'
+  message: 'Password must be between 6 - 15 characters long'
 },
 {
   field: 'confirmPassword',

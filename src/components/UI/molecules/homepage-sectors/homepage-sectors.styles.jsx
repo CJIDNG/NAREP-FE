@@ -77,7 +77,7 @@ import styled, { css } from 'styled-components';
 const ImageStyle = css`
 display:block;
 width:100%;
-height:30rem;
+height:20rem;
 object-fit:cover;
 position:relative;
 `;
@@ -89,14 +89,13 @@ export const SectorsGrid = styled.div`
     grid-gap: .5rem;
     padding: 0.5rem;
     grid-template: repeat(2, 1fr) / repeat(6, 1fr);
+    width:90%;
+    margin:0 auto;
 
     @media only screen and (max-width: 800px) {
-        display:flex;
-        flex-grow:1;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        width:53rem;
+        display:block;
+        width:90%;
+        margin: 0 auto;
     }
 `;
 export const GridOverlay = styled.div`
@@ -156,6 +155,9 @@ position: relative;
 export const GridImage = styled.img`
   position: relative; 
  ${ImageStyle}
+  @media only screen and (max-width: 800px) {
+margin-bottom:3rem;
+    }
 `;
 
 export const GridItem1 = styled.figure`
