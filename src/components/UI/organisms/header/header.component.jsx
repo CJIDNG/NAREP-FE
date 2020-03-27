@@ -1,9 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Input, Menu } from 'semantic-ui-react';
+import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from '@Redux/user/user.selectors';
+import { signOutStart } from '@Redux/user/user.action';
 import { Container } from './header.styles';
 
-const Header = () => (
+const Header = ({ currentUser, signOutStart: logOutUser }) => (
   <>
     <Container>
       <Menu secondary className="mr-5">
@@ -24,27 +28,50 @@ const Header = () => (
           to="/"
 
         />
-        <Menu.Menu position="right">
-          <Menu.Item>
-            <Input icon="search" placeholder="Search..." />
-          </Menu.Item>
-          <Menu.Item
-            name="signin"
-            as={Link}
-            to="/signin"
+        {
+          currentUser ? (
+            <Menu.Menu position="right">
+              <Menu.Item>
+                <Input icon="search" placeholder="Search..." />
+              </Menu.Item>
+              <Menu.Item
+                name="logout"
+                as={Link}
+                to="/logout"
+                onClick={logOutUser}
 
-          />
-          <Menu.Item
-            name="register"
-            as={Link}
-            to="/signup"
-            color="red"
+              />
+            </Menu.Menu>
+          ) : (
+              <Menu.Menu position="right">
+                <Menu.Item>
+                  <Input icon="search" placeholder="Search..." />
+                </Menu.Item>
+                <Menu.Item
+                  name="signin"
+                  as={Link}
+                  to="/signin"
 
-          />
-        </Menu.Menu>
+                />
+                <Menu.Item
+                  name="register"
+                  as={Link}
+                  to="/signup"
+                  color="red"
+
+                />
+              </Menu.Menu>
+          )
+        }
       </Menu>
     </Container>
   </>
 );
 
-export default Header;
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+});
+const mapDispatchToProps = (dispatch) => ({
+  signOutStart: () => dispatch(signOutStart())
+});
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

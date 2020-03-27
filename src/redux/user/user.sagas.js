@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import API_REQUEST from './user.requests';
 import UserActionTypes from './user.types';
 import {
-  signUpFailure, signUpSuccess, handleLoginError, loginUser
+  signUpFailure, signUpSuccess, handleLoginError, loginUser, signOutSuccess, signOutFailure
 } from './user.action';
 
 export function* signUpUser({ payload }) {
@@ -43,15 +43,26 @@ export function* fetchLogin({ payload, history }) {
     yield put(handleLoginError({ error: 'server error' }));
   }
 }
-
+export function* userSignout() {
+  try {
+    localStorage.removeItem('token');
+    yield put(signOutSuccess());
+    window.location.reload();
+  } catch (error) {
+    yield put(signOutFailure(error));
+  }
+}
 
 export function* onEmailSigninStart() {
   yield takeLatest(UserActionTypes.LOGIN_IN_PROGRESS, fetchLogin);
 }
-
+export function* onSignoutStart() {
+  yield takeLatest(UserActionTypes.SIGNOUT_START, userSignout);
+}
 export function* userSagas() {
   yield all([
     call(onSignupStart),
     call(onEmailSigninStart),
+    call(onSignoutStart),
   ]);
 }

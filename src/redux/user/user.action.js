@@ -29,3 +29,14 @@ export const signUpFailure = (error) => ({
 export const requestLogin = (payload) => ({ type: UserActionTypes.LOGIN_IN_PROGRESS, payload });
 export const loginUser = (payload) => ({ type: UserActionTypes.LOGIN_USER, payload });
 export const handleLoginError = (payload) => ({ type: UserActionTypes.LOGIN_ERROR, payload });
+
+export const signOutStart = () => ({
+  type: UserActionTypes.SIGNOUT_START
+});
+export const signOutSuccess = () => ({
+  type: UserActionTypes.SIGNOUT_SUCCESS
+});
+export const signOutFailure = (error) => ({
+  type: UserActionTypes.SIGNOUT_FAILURE,
+  payload: error
+});
