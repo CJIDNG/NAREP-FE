@@ -4,13 +4,12 @@ import CalendarIcon from '@Atoms/Icons//calendar.icon';
 import FileIcon from '@Atoms/Icons//file.icon';
 import DownloadIcon from '@Atoms/Icons//download.icon';
 import TagIcon from '@Atoms/Icons/tag.icon';
-import FacebookIcon from '@Atoms/Icons/facebook.icon';
-import TwitterIcon from '@Atoms/Icons/twitter.icon';
-import { handleDateFormat } from '@Utils/handleDateFormat';
-import DownloadButton from '@Components/UI/atoms/custom-button/download-button.component';
+import { handleDateFormat } from '@Utils/helpers/handleDateFormat';
+import DownloadDataset from './dataset-download.component';
+import SocialShare from './social-share.component';
 
 const DatasetPage = ({
-  title, user: { username }, updatedAt, createdAt, description, numberOfDownload, fileType
+  title, user: { username }, updatedAt, createdAt, description, numberOfDownload, fileType, fileName
 }) => (
     <>
       <div className="w-2/5 mx-auto my-4 border border-gray-500 px-16 py-8">
@@ -64,14 +63,8 @@ const DatasetPage = ({
           <p className="text-gray-800 text-lg capitalize font-semibold">Description</p>
           <p>{ description }</p>
         </div>
-        <DownloadButton />
-        <div className="mt-5">
-          <span>Share on:</span>
-          <div className="flex">
-            <FacebookIcon fill="#3b5998" className="mr-4" />
-            <TwitterIcon fill="#1DA1F2" />
-          </div>
-        </div>
+        <DownloadDataset fileName={fileName} />
+        <SocialShare title={title} />
 
       </div>
 
