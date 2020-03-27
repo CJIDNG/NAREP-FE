@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   currentUser: null,
   error: {},
   isAuthenticated: false,
-  status: 'pending'
+  status: 'pending',
+  loading: false
 };
 
 const userReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -18,24 +19,25 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
       };
     case UserActionTypes.LOGIN_RESET:
       return {
-        currentUser: {},
+        currentUser: null,
         error: {},
         isAuthenticated: false,
         status: 'pending'
       };
     case UserActionTypes.ERROR_RESET:
       return {
-        currentUser: {},
+        currentUser: null,
         error: {},
         isAuthenticated: false,
         status: 'pending'
       };
     case UserActionTypes.LOGIN_IN_PROGRESS:
       return {
-        currentUser: {},
+        currentUser: null,
         error: {},
         isAuthenticated: false,
-        status: 'loading'
+        status: 'loading',
+        loading: true
       };
     case UserActionTypes.LOGIN_ERROR:
     case UserActionTypes.SIGNUP_FAILURE:

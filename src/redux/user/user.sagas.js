@@ -1,12 +1,12 @@
 import {
   call, put, takeLatest, all
 } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
 import API_REQUEST from './user.requests';
 import UserActionTypes from './user.types';
 import {
   signUpFailure, signUpSuccess, handleLoginError, loginUser
 } from './user.action';
-
 
 export function* signUpUser({ payload }) {
   try {
@@ -20,7 +20,7 @@ export function* onSignupStart() {
   yield takeLatest(UserActionTypes.SIGNUP_START, signUpUser);
 }
 
-export function* fetchLogin({ payload }) {
+export function* fetchLogin({ payload, history }) {
   try {
     const response = yield call(API_REQUEST.signinUser, payload);
     const { data: { errors, user } } = response;
@@ -28,7 +28,8 @@ export function* fetchLogin({ payload }) {
       case 404:
         yield put({ type: UserActionTypes.LOGIN_RESET });
         yield put(handleLoginError({ error: errors.message }));
-        return;
+        toast.error(errors.message, { autoClose: 5000 });
+        return false;
       case 200:
         localStorage.setItem('token', user.token);
         yield put({ type: UserActionTypes.ERROR_RESET });

@@ -5,7 +5,7 @@ import UserProfileIcon from '@Atoms/Icons/user-profile.icon';
 import CalendarIcon from '@Atoms/Icons//calendar.icon';
 import FileIcon from '@Atoms/Icons//file.icon';
 import DownloadIcon from '@Atoms/Icons//download.icon';
-import { handleDateFormat } from '@Utils/handleDateFormat';
+import { handleDateFormat } from '@Utils/helpers/handleDateFormat';
 
 const DataSetItem = ({
   title, user: { username }, fileType, numberOfDownload, updatedAt, slug

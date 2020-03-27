@@ -37,7 +37,6 @@ const SignIn = ({
     setUserErrors({ errors: { ...errors, [name]: validatorErrors[name] }, ...newFields });
     setUserCredentials({ ...userCredentials, [name]: value });
   };
-
   const formValid = (formErrors) => !Object.values(formErrors).filter((val) => !!val).length;
   const { errors } = userErrors;
   const handleSubmit = async (event) => {
@@ -48,15 +47,11 @@ const SignIn = ({
       });
     }
   };
-  const error = Object.keys(user.error).map((eachError) => (
-    <div key={eachError} className="error">{ user.error[eachError] }</div>
-  ));
   return (
     <Container>
 
       <FormContainer onSubmit={handleSubmit}>
         <Title>Register Account</Title>
-        <InputErrors>{ error }</InputErrors>
         <FormInput
           type="email"
           name="email"

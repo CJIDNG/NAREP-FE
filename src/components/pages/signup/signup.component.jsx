@@ -45,7 +45,7 @@ const SignUp = ({ signUpStart: createUserRequest }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (formValid(errors)) {
-      createUserRequest({
+      await createUserRequest({
         username, email, password, confirmPassword
       });
     }

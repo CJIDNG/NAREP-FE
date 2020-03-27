@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { PersistGate } from 'redux-persist/integration/react';
+import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from '@Redux/store';
+import { store, persistor } from '@Redux/store';
 import App from './App';
 import './styles/tailwind.css';
 import * as serviceWorker from './serviceWorker';
@@ -12,10 +12,9 @@ import './index.css';
 
 ReactDOM.render(<Provider store={store}>
   <BrowserRouter>
-    {/* <PersistGate persistor={persistor}>
+    <PersistGate persistor={persistor}>
       <App />
-    </PersistGate> */}
-    <App />
+    </PersistGate>
   </BrowserRouter>
 </Provider>,
 document.getElementById('root'));
