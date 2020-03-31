@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '@Redux/user/user.selectors';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -25,6 +27,15 @@ const DownloadFile = ({ fileName, currentUser, history }) => {
       </button>
     </>
   );
+};
+
+DownloadFile.propTypes = {
+  currentUser: PropTypes.shape({}),
+  history: PropTypes.shape({}).isRequired,
+  fileName: PropTypes.string.isRequired,
+};
+DownloadFile.defaultProps = {
+  currentUser: null
 };
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
