@@ -1,11 +1,3 @@
-import { connect as connectRedux } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { createBrowserHistory } from 'history';
 
-const connect = (actions) => (Component) => {
-  const mapStateToProps = (state) => ({ ...state });
-  const mapDispatchToProps = (dispatch) => bindActionCreators(actions, dispatch);
-
-  return connectRedux(mapStateToProps, mapDispatchToProps)(Component);
-};
-
-export default connect;
+export default createBrowserHistory();
