@@ -1,5 +1,7 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import UserProfileIcon from '@Atoms/Icons/user-profile.icon';
+import PropTypes from 'prop-types';
 import CalendarIcon from '@Atoms/Icons//calendar.icon';
 import FileIcon from '@Atoms/Icons//file.icon';
 import DownloadIcon from '@Atoms/Icons//download.icon';
@@ -10,7 +12,7 @@ import SocialShare from './social-share.component';
 import { TagStyle } from './dataset-component.styles';
 
 const DatasetPage = ({
-  title, user: { username }, updatedAt, createdAt, description, numberOfDownload, fileType, fileName, tags
+  title, user, updatedAt, createdAt, description, numberOfDownload, fileType, fileName, tags
 }) => (
     <>
       <div className="w-2/5 mx-auto my-4 border border-gray-500 px-16 py-8">
@@ -22,7 +24,7 @@ const DatasetPage = ({
               <UserProfileIcon className="mr-3" />
               <span>Username</span>
             </div>
-            <span>{ username }</span>
+            <span>{ user.username }</span>
           </div>
           <div className="flex justify-between items-center flex-wrap">
             <div className="flex justify-center items-center">
@@ -78,5 +80,19 @@ const DatasetPage = ({
 
     </>
 );
-
+DatasetPage.propTypes = {
+  title: PropTypes.string.isRequired,
+  user: PropTypes.shape({}).isRequired,
+  username: PropTypes.string,
+  updatedAt: PropTypes.string.isRequired,
+  fileName: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  numberOfDownload: PropTypes.number.isRequired,
+  fileType: PropTypes.string.isRequired,
+  tags: PropTypes.array.isRequired,
+};
+DatasetPage.defaultProps = {
+  username: null
+};
 export default DatasetPage;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FacebookIcon from '@Atoms/Icons/facebook.icon';
 import TwitterIcon from '@Atoms/Icons/twitter.icon';
 import { facebookShare, twitterShare } from '@Utils/helpers/socialShare';
@@ -14,5 +15,7 @@ const SocialShare = ({ title }) => (
     </div>
   </div>
 );
-
+SocialShare.propTypes = {
+  title: PropTypes.string.isRequired
+};
 export default SocialShare;

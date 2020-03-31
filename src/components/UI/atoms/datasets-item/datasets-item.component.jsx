@@ -41,7 +41,8 @@ DataSetItem.propTypes = {
   fileType: PropTypes.string.isRequired,
   user: PropTypes.shape({}).isRequired,
   numberOfDownload: PropTypes.number.isRequired,
-  updatedAt: PropTypes.string.isRequired
+  updatedAt: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
 };
 
 export default DataSetItem;

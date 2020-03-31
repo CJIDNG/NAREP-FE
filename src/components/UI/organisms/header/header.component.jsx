@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Input, Menu } from 'semantic-ui-react';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '@Redux/user/user.selectors';
@@ -67,7 +68,13 @@ const Header = ({ currentUser, signOutStart: logOutUser }) => (
     </Container>
   </>
 );
-
+Header.propTypes = {
+  currentUser: PropTypes.shape({}),
+  signOutStart: PropTypes.func.isRequired,
+};
+Header.defaultProps = {
+  currentUser: null
+};
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
 });
