@@ -9,4 +9,12 @@ export default {
       return error.response;
     }
   },
+  signinUser: async (data) => {
+    try {
+      const response = await API_SERVICE.post('/auth/signin', data);
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
 };

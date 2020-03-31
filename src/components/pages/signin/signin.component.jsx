@@ -1,23 +1,21 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-// import { toast } from 'react-toastify';
-// import { createStructuredSelector } from 'reselect';
-// import { selectCurrentUser, seclectAuthError } from '../../redux/user/user.selectors';
-import { requestLogin } from '../../redux/user/user.action';
-import Validator from '../../utils/validator';
-import FormInput from '../shared/form-input/form-input.component';
-import CustomButton from '../shared/custom-button/custom-button.component';
-import SignupValidation from '../../validations/signup.validation';
+import { requestLogin } from '@Redux/user/user.action';
+import { createStructuredSelector } from 'reselect';
+import { seclectAuthError } from '@Redux/user/user.selectors';
+import Validator from '@Utils/validator';
+import FormInput from '@Atoms/form-input/form-input.component';
+import AuthButton from '@Components/UI/atoms/custom-button/auth-button.component';
+import SigninValidation from '@Utils/validations/auth.validations';
 import {
   Container, Title, FormContainer, InputErrors, ToSignin, LinkToSignin
-} from '../shared/form-input/component.styles';
+} from '@Atoms/form-input/component.styles';
 
 
 const SignIn = ({
-  requestLogin: loginCurrentUser, history, user
+  requestLogin: loginCurrentUser, history,
 }) => {
   const [userCredentials, setUserCredentials] = useState({
     email: '',
@@ -32,16 +30,14 @@ const SignIn = ({
   });
 
   const { email, password } = userCredentials;
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     const { errors, ...others } = userErrors;
     const newFields = { ...others, [name]: value };
-    const validatorErrors = new Validator(SignupValidation).validate(newFields);
+    const validatorErrors = new Validator(SigninValidation).validate(newFields);
     setUserErrors({ errors: { ...errors, [name]: validatorErrors[name] }, ...newFields });
     setUserCredentials({ ...userCredentials, [name]: value });
   };
-
   const formValid = (formErrors) => !Object.values(formErrors).filter((val) => !!val).length;
   const { errors } = userErrors;
   const handleSubmit = async (event) => {
@@ -52,15 +48,11 @@ const SignIn = ({
       });
     }
   };
-  const error = Object.keys(user.error).map((eachError) => (
-    <div key={eachError} className="error">{ user.error[eachError] }</div>
-  ));
   return (
     <Container>
 
       <FormContainer onSubmit={handleSubmit}>
-        <Title>Register Account</Title>
-        <InputErrors>{ error }</InputErrors>
+        <Title>Login Account</Title>
         <FormInput
           type="email"
           name="email"
@@ -81,7 +73,8 @@ const SignIn = ({
           required
         />
         <InputErrors>{ errors.password }</InputErrors>
-        <CustomButton type="submit">Sign in</CustomButton>
+        <AuthButton>Sign in</AuthButton>
+        <br />
         <ToSignin>
           Do not have an account?
           <LinkToSignin to="/signup">Sign Up</LinkToSignin>
@@ -99,8 +92,8 @@ SignIn.propTypes = {
 SignIn.defaultProps = {
   currentUser: PropTypes.null
 };
-const mapStateToProps = (state) => ({
-  user: state.user
+const mapStateToProps = createStructuredSelector({
+  authError: seclectAuthError,
 });
 const mapDispatchToProps = (dispatch) => ({
   requestLogin: (payload) => dispatch(requestLogin(payload))
