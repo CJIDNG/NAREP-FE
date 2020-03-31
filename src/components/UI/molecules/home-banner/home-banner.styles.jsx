@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-/* eslint-disable import/prefer-default-export */
->>>>>>> restructure folder, added craco for imports
-=======
->>>>>>> fix login redirect
 import styled from 'styled-components';
 
 
@@ -19,14 +12,6 @@ export const HomeBannerContainer = styled.div`
       flex-direction:column;
       justify-content:center;
       align-items:center;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-      width:50rem;
-      margin:2rem;
->>>>>>> restructure folder, added craco for imports
-=======
->>>>>>> created single dataset page
   }
 `;
 
@@ -47,6 +32,7 @@ export const HomeBannerTextContainer = styled.div`
 export const HomeBannerText = styled.p`
   font-weight:500;
   font-size:1.5rem;
+
 `;
 export const HomeBannerImage = styled.img`
   flex-grow:1;
