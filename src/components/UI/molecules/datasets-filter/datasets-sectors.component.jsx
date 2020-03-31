@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import { selectSectors } from '@Redux/datasets/datasets.selectors';
 import { fetchSectorsStarted } from '@Redux/datasets/datasets.actions';
-
+import { Link } from 'react-router-dom';
 
 const DatasetSectors = ({ fetchSectorsStarted: getAllSectors, sectors }) => {
   useEffect(() => {
@@ -17,7 +17,11 @@ const DatasetSectors = ({ fetchSectorsStarted: getAllSectors, sectors }) => {
     <div className="p-4">
       <span>
         { sectors.map(({ id, name }) => (
-          <h3 key={id} className="capitalize mb-5 tracking-wide text-gray-600">{ name }</h3>
+          <h3 key={id} className="capitalize mb-5 tracking-wide text-gray-600">
+            <Link to={`/datasets?sectorId=${id}`}>
+              { name }
+            </Link>
+          </h3>
         )) }
       </span>
     </div>

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { requestLogin } from '@Redux/user/user.action';
+import { createStructuredSelector } from 'reselect';
+import { seclectAuthError } from '@Redux/user/user.selectors';
 import Validator from '@Utils/validator';
 import FormInput from '@Atoms/form-input/form-input.component';
 import AuthButton from '@Components/UI/atoms/custom-button/auth-button.component';
@@ -13,7 +15,7 @@ import {
 
 
 const SignIn = ({
-  requestLogin: loginCurrentUser, history, user
+  requestLogin: loginCurrentUser, history,
 }) => {
   const [userCredentials, setUserCredentials] = useState({
     email: '',
@@ -28,7 +30,6 @@ const SignIn = ({
   });
 
   const { email, password } = userCredentials;
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     const { errors, ...others } = userErrors;
@@ -51,7 +52,7 @@ const SignIn = ({
     <Container>
 
       <FormContainer onSubmit={handleSubmit}>
-        <Title>Register Account</Title>
+        <Title>Login Account</Title>
         <FormInput
           type="email"
           name="email"
@@ -73,6 +74,7 @@ const SignIn = ({
         />
         <InputErrors>{ errors.password }</InputErrors>
         <AuthButton>Sign in</AuthButton>
+        <br />
         <ToSignin>
           Do not have an account?
           <LinkToSignin to="/signup">Sign Up</LinkToSignin>
@@ -85,14 +87,13 @@ SignIn.propTypes = {
   requestLogin: PropTypes.func.isRequired,
   currentUser: PropTypes.shape({}),
   history: PropTypes.shape({}).isRequired,
-  user: PropTypes.shape({}).isRequired,
 
 };
 SignIn.defaultProps = {
   currentUser: PropTypes.null
 };
-const mapStateToProps = (state) => ({
-  user: state.user
+const mapStateToProps = createStructuredSelector({
+  authError: seclectAuthError,
 });
 const mapDispatchToProps = (dispatch) => ({
   requestLogin: (payload) => dispatch(requestLogin(payload))

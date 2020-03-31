@@ -2,12 +2,15 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { persistStore } from 'redux-persist';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
+import history from '@Utils/connect';
+import { routerMiddleware } from 'react-router-redux';
 import rootReducer from '../root.reducers';
 import rootSaga from '../root.sagas';
 
 const enhancers = [];
 const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware];
+const createRouterMiddleeware = routerMiddleware(history);
+const middlewares = [sagaMiddleware, createRouterMiddleeware];
 
 if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger);

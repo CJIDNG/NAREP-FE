@@ -7,6 +7,7 @@ import DataSetCollection from '@Molecules/datasets-collection/datasets-collectio
 import DatasetFilter from '@Molecules/datasets-filter/datasets-filter.component';
 import { selectItemsCount } from '@Redux/datasets/datasets.selectors';
 
+
 const DatasetContainer = ({ collectionsCount }) => (
   <>
     <div className="flex mb-4 justify-center">
@@ -24,6 +25,7 @@ const DatasetContainer = ({ collectionsCount }) => (
           </div>
           <DataSetCollection />
         </div>
+        <div />
       </div>
     </div>
   </>

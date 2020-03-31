@@ -2,6 +2,8 @@ import {
   call, put, takeLatest, all
 } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
+import { push } from 'react-router-redux';
+import jwtDecode from 'jwt-decode';
 import API_REQUEST from './user.requests';
 import UserActionTypes from './user.types';
 import {
@@ -26,17 +28,19 @@ export function* fetchLogin({ payload, history }) {
     const { data: { errors, user } } = response;
     switch (response.status) {
       case 404:
+      case 400:
         yield put({ type: UserActionTypes.LOGIN_RESET });
-        yield put(handleLoginError({ error: errors.message }));
         toast.error(errors.message, { autoClose: 5000 });
         return false;
       case 200:
-        localStorage.setItem('token', user.token);
+        // localStorage.setItem('token', user.token);
         yield put({ type: UserActionTypes.ERROR_RESET });
-        yield put(loginUser(user));
+        yield put(loginUser(jwtDecode(user.token)));
+        yield put(push('/'));
         return;
       default:
         yield put({ type: UserActionTypes.LOGIN_RESET });
+        return;
     }
   } catch (error) {
     yield put({ type: UserActionTypes.LOGIN_RESET });
@@ -45,7 +49,7 @@ export function* fetchLogin({ payload, history }) {
 }
 export function* userSignout() {
   try {
-    localStorage.removeItem('token');
+    // localStorage.removeItem('token');
     yield put(signOutSuccess());
     window.location.reload();
   } catch (error) {

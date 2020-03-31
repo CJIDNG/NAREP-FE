@@ -7,9 +7,10 @@ import TagIcon from '@Atoms/Icons/tag.icon';
 import { handleDateFormat } from '@Utils/helpers/handleDateFormat';
 import DownloadDataset from './dataset-download.component';
 import SocialShare from './social-share.component';
+import { TagStyle } from './dataset-component.styles';
 
 const DatasetPage = ({
-  title, user: { username }, updatedAt, createdAt, description, numberOfDownload, fileType, fileName
+  title, user: { username }, updatedAt, createdAt, description, numberOfDownload, fileType, fileName, tags
 }) => (
     <>
       <div className="w-2/5 mx-auto my-4 border border-gray-500 px-16 py-8">
@@ -56,7 +57,13 @@ const DatasetPage = ({
               <TagIcon className="mr-3" />
               <span>Tags</span>
             </div>
-            <span>date</span>
+            <div>
+              {
+                tags.map(({ id, name }) => (
+                  <TagStyle key={id}>{ name }</TagStyle>
+                ))
+              }
+            </div>
           </div>
         </div>
         <div className=" my-4">

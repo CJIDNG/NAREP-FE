@@ -95,7 +95,7 @@ const SignUp = ({ signUpStart: createUserRequest }) => {
         <AuthButton>
           Create my account
         </AuthButton>
-
+        <br />
         <ToSignin>
           Already have an account?
           <LinkToSignin to="/signin">Sign in</LinkToSignin>

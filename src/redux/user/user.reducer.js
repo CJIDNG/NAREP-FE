@@ -2,7 +2,7 @@ import UserActionTypes from './user.types';
 
 const INITIAL_STATE = {
   currentUser: null,
-  error: {},
+  error: null,
   isAuthenticated: false,
   status: 'pending',
   loading: false
@@ -13,28 +13,28 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
     case UserActionTypes.LOGIN_USER:
       return {
         currentUser: payload,
-        error: {},
+        error: null,
         isAuthenticated: true,
         status: 'successful'
       };
     case UserActionTypes.LOGIN_RESET:
       return {
         currentUser: null,
-        error: {},
+        error: null,
         isAuthenticated: false,
         status: 'pending'
       };
     case UserActionTypes.ERROR_RESET:
       return {
         currentUser: null,
-        error: {},
+        error: null,
         isAuthenticated: false,
         status: 'pending'
       };
     case UserActionTypes.LOGIN_IN_PROGRESS:
       return {
         currentUser: null,
-        error: {},
+        error: null,
         isAuthenticated: false,
         status: 'loading',
         loading: true
@@ -44,7 +44,7 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         currentUser: null,
         isAuthenticated: false,
-        error: {},
+        error: null,
       };
     case UserActionTypes.LOGIN_ERROR:
     case UserActionTypes.SIGNUP_FAILURE:
