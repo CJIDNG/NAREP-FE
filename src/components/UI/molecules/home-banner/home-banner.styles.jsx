@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /* eslint-disable import/prefer-default-export */
 >>>>>>> restructure folder, added craco for imports
+=======
+>>>>>>> fix login redirect
 import styled from 'styled-components';
 
 

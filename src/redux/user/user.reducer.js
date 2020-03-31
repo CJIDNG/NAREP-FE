@@ -44,7 +44,7 @@ const userReducer = (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         currentUser: null,
         isAuthenticated: false,
-        error: {},
+        error: null,
       };
     case UserActionTypes.LOGIN_ERROR:
     case UserActionTypes.SIGNUP_FAILURE:

@@ -8,10 +8,18 @@ import {
 } from './datasets.actions';
 
 
-export function* fetchDataset() {
+export function* fetchDataset({ payload: page }) {
   try {
-    const fetchedDatasets = yield call(API_REQUEST.fetchDatasets);
+    const query = new URLSearchParams(window.location.search);
+    const sectorId = query.get('sectorId');
+    if (sectorId) {
+      const fetchedDatasetsBySectors = yield call(API_REQUEST.fetchDatasets, page, sectorId);
+      yield put(fetchDatasetsSucceeded(fetchedDatasetsBySectors.data.files));
+      return;
+    }
+    const fetchedDatasets = yield call(API_REQUEST.fetchDatasets, page);
     yield put(fetchDatasetsSucceeded(fetchedDatasets.data.files));
+    return;
   } catch (error) {
     yield put(fetchDatasetsFailed(error));
   }

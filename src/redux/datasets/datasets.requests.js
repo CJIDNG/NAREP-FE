@@ -1,9 +1,13 @@
 import API_SERVICE from '@Utils/http/http';
 
 export default {
-  fetchDatasets: async () => {
+  fetchDatasets: async (page, sectorId) => {
     try {
-      const response = await API_SERVICE.get('/files');
+      if (sectorId) {
+        const response = await API_SERVICE.get(`/files?page=${page}&limit=10&sectorId=${sectorId}`);
+        return response;
+      }
+      const response = await API_SERVICE.get(`/files?page=${page}&limit=10`);
       return response;
     } catch (error) {
       return error.response;
