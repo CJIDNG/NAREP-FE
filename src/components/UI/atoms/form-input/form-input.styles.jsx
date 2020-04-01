@@ -8,25 +8,32 @@ const shrinkLabelStyles = css`
   font-size: 12px;
   color: ${mainColor};
 `;
-
-export const GroupContainer = styled.div`
-  position: relative;
-  margin: 35px 0 10px 0;
-  input[type='password'] {
-    letter-spacing: 0.3em;
-  }
-`;
-export const FormInputContainer = styled.input`
-  background: none;
+const FormStyles = css`background: none;
   border-bottom: 1px solid #dcdcdc;
   background-color: white;
   color: ${subColor};
   font-size: 18px;
   display: block;
   width: 100%;
-  padding: 12px 20px;
   box-sizing: border-box;
   border-radius: 0;
+  &:focus {
+    outline: none;
+  }
+`;
+export const GroupContainer = styled.div`
+  position: relative;
+  margin: 35px 0 10px 0;
+  input[type='password'] {
+    letter-spacing: 0.3em;
+  }
+   input[type='password'] {
+    letter-spacing: 0.3em;
+  }
+`;
+export const FormInputContainer = styled.input`
+ padding: 12px 20px;
+ ${FormStyles}
   &:focus {
     outline: none;
   }
@@ -48,4 +55,16 @@ export const FormInputLabel = styled.label`
   &.shrink {
     ${shrinkLabelStyles}
   }
+`;
+export const TextAreaContainer = styled.textarea`
+padding: 5px 10px;
+ ${FormStyles}
+   &:focus {
+    outline: none;
+  }
+  height: 10rem;
+`;
+
+export const FileInput = styled.input`
+height:3rem;
 `;

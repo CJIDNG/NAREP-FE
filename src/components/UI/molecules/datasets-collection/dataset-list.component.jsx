@@ -15,7 +15,7 @@ const DatasetLists = ({
           className="mt-4"
           activePage={activePage}
           onPageChange={onChange}
-          totalPages={Math.floor(collectionsCount / 10)}
+          totalPages={Math.floor(collectionsCount / 10) + 1}
           ellipsisItem={null}
         />
       </div>

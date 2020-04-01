@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '@Redux/user/user.selectors';
@@ -31,7 +30,9 @@ const DownloadFile = ({ fileName, currentUser, history }) => {
 
 DownloadFile.propTypes = {
   currentUser: PropTypes.shape({}),
-  history: PropTypes.shape({}).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func
+  }).isRequired,
   fileName: PropTypes.string.isRequired,
 };
 DownloadFile.defaultProps = {
