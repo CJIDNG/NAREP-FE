@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
-import { selectSectors } from '@Redux/datasets/datasets.selectors';
+import { selectSectors } from '@Redux/datasets/get-datasets/datasets.selectors';
 import {
   DirectoryMenuContainer,
   SectorItemContainer,

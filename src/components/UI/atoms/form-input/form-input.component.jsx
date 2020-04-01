@@ -17,6 +17,10 @@ const FormInput = ({ label, ...props }) => (
   </GroupContainer>
 );
 FormInput.propTypes = {
-  label: PropTypes.string.isRequired
+  label: PropTypes.string,
+  value: PropTypes.string.isRequired,
+};
+FormInput.defaultProps = {
+  label: null
 };
 export default FormInput;

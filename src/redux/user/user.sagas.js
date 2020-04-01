@@ -22,7 +22,7 @@ export function* onSignupStart() {
   yield takeLatest(UserActionTypes.SIGNUP_START, signUpUser);
 }
 
-export function* fetchLogin({ payload, history }) {
+export function* fetchLogin({ payload }) {
   try {
     const response = yield call(API_REQUEST.signinUser, payload);
     const { data: { errors, user } } = response;
@@ -33,7 +33,7 @@ export function* fetchLogin({ payload, history }) {
         toast.error(errors.message, { autoClose: 5000 });
         return false;
       case 200:
-        // localStorage.setItem('token', user.token);
+        localStorage.setItem('jwtToken', user.token);
         yield put({ type: UserActionTypes.ERROR_RESET });
         yield put(loginUser(jwtDecode(user.token)));
         yield put(push('/'));
@@ -49,7 +49,7 @@ export function* fetchLogin({ payload, history }) {
 }
 export function* userSignout() {
   try {
-    // localStorage.removeItem('token');
+    localStorage.removeItem('jwtToken');
     yield put(signOutSuccess());
     window.location.reload();
   } catch (error) {

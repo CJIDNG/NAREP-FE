@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
-import { selectItems, selectItemsCount, selectSectors } from '@Redux/datasets/datasets.selectors';
-import { fetchDatasetsStarted } from '@Redux/datasets/datasets.actions';
+import { selectItems, selectItemsCount, selectSectors } from '@Redux/datasets/get-datasets/datasets.selectors';
+import { fetchDatasetsStarted } from '@Redux/datasets/get-datasets/datasets.actions';
 import { withRouter, useLocation } from 'react-router-dom';
 import DatasetLists from './dataset-list.component';
 

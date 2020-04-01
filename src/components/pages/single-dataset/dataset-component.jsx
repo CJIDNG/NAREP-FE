@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import UserProfileIcon from '@Atoms/Icons/user-profile.icon';
 import PropTypes from 'prop-types';
@@ -82,8 +81,9 @@ const DatasetPage = ({
 );
 DatasetPage.propTypes = {
   title: PropTypes.string.isRequired,
-  user: PropTypes.shape({}).isRequired,
-  username: PropTypes.string,
+  user: PropTypes.shape({
+    username: PropTypes.string,
+  }).isRequired,
   updatedAt: PropTypes.string.isRequired,
   fileName: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
@@ -91,8 +91,5 @@ DatasetPage.propTypes = {
   numberOfDownload: PropTypes.number.isRequired,
   fileType: PropTypes.string.isRequired,
   tags: PropTypes.array.isRequired,
-};
-DatasetPage.defaultProps = {
-  username: null
 };
 export default DatasetPage;
