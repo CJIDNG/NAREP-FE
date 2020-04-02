@@ -14,7 +14,7 @@ const DatasetPage = ({
   title, user, updatedAt, createdAt, description, numberOfDownload, fileType, fileName, tags
 }) => (
     <>
-      <div className="w-2/5 mx-auto my-4 border border-gray-500 px-16 py-8">
+      <div className="w-2/5  mx-10 border border-gray-500 px-16 py-8">
         <h4 className="text-gray-700 text-2xl capitalize font-semibold mb-6">{ title }</h4>
         <div className="my-5">
           <p className="text-gray-800 text-xl capitalize ">Metadata</p>

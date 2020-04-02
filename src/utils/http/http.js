@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_ROUTE = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_API_ROUTE : process.env.REACT_APP_STAGING_API_ROUTE;
 
 const http = axios.create({
-  baseURL: API_ROUTE
+  baseURL: API_ROUTE,
 });
 
 http.interceptors.request.use((config) => {
@@ -22,8 +22,8 @@ const API_SERVICE = {
     return http.post(endpoint, data);
   },
 
-  patch(endpoint, data) {
-    return http.patch(endpoint, data);
+  put(endpoint, data) {
+    return http.put(endpoint, data);
   },
 
   delete(endpoint) {
