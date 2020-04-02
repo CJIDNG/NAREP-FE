@@ -3,7 +3,7 @@ import { Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createDatasetStarted } from '@Redux/datasets/create-dataset/create-dataset.actions';
-import DatasetModal from '@Atoms/modal/modal.component';
+import DatasetModal from '@Components/UI/atoms/modal/edit-modal.component';
 
 const CreateDataset = ({ createDataset }) => {
   const [fileCredentials, setFileCredentials] = useState({

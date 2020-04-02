@@ -39,7 +39,9 @@ const DataSetItem = ({
 DataSetItem.propTypes = {
   title: PropTypes.string.isRequired,
   fileType: PropTypes.string.isRequired,
-  user: PropTypes.shape({}).isRequired,
+  user: PropTypes.shape({
+    username: PropTypes.string,
+  }).isRequired,
   numberOfDownload: PropTypes.number.isRequired,
   updatedAt: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,

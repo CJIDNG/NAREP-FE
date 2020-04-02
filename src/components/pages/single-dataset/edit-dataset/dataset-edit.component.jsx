@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DatasetModal from '@Atoms/modal/modal.component';
+import EditDatasetModal from '@Components/UI/atoms/modal/edit-modal.component';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updateDatasetStarted } from '@Redux/datasets/update-dataset/update-dataset.actions';
@@ -39,7 +39,7 @@ const EditDataset = ({
     await updateDataset({ slug, formData });
   };
   return (
-    <DatasetModal
+    <EditDatasetModal
       handleChange={handleChange}
       handleSubmit={handleSubmit}
       title={title}
