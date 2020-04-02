@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { Button } from 'semantic-ui-react';
+import DatasetModal from '@Atoms/modal/modal.component';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { createDatasetStarted } from '@Redux/datasets/create-dataset/create-dataset.actions';
-import DatasetModal from '@Atoms/modal/modal.component';
+import { updateDatasetStarted } from '@Redux/datasets/update-dataset/update-dataset.actions';
 
-const CreateDataset = ({ createDataset }) => {
+const EditDataset = ({
+  title: prevTitle, description: prevDesc, updateDataset, slug
+}) => {
   const [fileCredentials, setFileCredentials] = useState({
-    title: '',
-    description: '',
+    title: prevTitle,
+    description: prevDesc,
     sector: '',
     file: null,
     tags: []
@@ -35,7 +36,7 @@ const CreateDataset = ({ createDataset }) => {
     formData.append('description', description);
     formData.append('sector', sector);
     formData.append('tags', tags);
-    await createDataset(formData);
+    await updateDataset({ slug, formData });
   };
   return (
     <DatasetModal
@@ -45,14 +46,17 @@ const CreateDataset = ({ createDataset }) => {
       description={description}
       onChangeHandler={onChangeHandler}
       selectedTags={selectedTags}
-      trigger={<Button>Create Dataset</Button>}
+      trigger={<button type="button" className="h-10 px-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">   Edit</button>}
     />
   );
 };
-CreateDataset.propTypes = {
-  createDataset: PropTypes.func.isRequired,
+EditDataset.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+  updateDataset: PropTypes.func.isRequired,
 };
 const mapDispatchToProps = (dispatch) => ({
-  createDataset: (payload) => dispatch(createDatasetStarted(payload))
+  updateDataset: (payload) => dispatch(updateDatasetStarted(payload))
 });
-export default connect(null, mapDispatchToProps)(CreateDataset);
+export default connect(null, mapDispatchToProps)(EditDataset);

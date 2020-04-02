@@ -6,7 +6,7 @@ import { fetchSingleDatasetStarted } from '@Redux/datasets/get-datasets/datasets
 import { selectDataset } from '@Redux/datasets/get-datasets/datasets.selectors';
 import Spinner from '@Atoms/spinner/spinner.component';
 import Header from '@Components/UI/organisms/header/header.component';
-import DatasetPage from './dataset-component';
+import DatasetContainer from './dataset-container.component';
 
 const SingleDataset = ({ match: { params: { slug } }, getSingleDataset, singleDataset: { isLoading, singleDataset } }) => {
   useEffect(() => {
@@ -19,7 +19,7 @@ const SingleDataset = ({ match: { params: { slug } }, getSingleDataset, singleDa
     <div>
       <Header />
       {
-        isLoading ? <Spinner /> : <DatasetPage {...singleDataset} />
+        isLoading ? <Spinner /> : <DatasetContainer {...singleDataset} />
       }
     </div>
 
