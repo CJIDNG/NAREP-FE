@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -21,13 +22,10 @@ const Header = ({ currentUser, signOutStart: logOutUser }) => (
           name="datasets"
           as={Link}
           to="/datasets"
-
         />
         <Menu.Item
           name="developers"
-          as={Link}
-          to="/"
-
+        // onClick={() => window.open('https://github.com/CJIDNG/NAREP-BE')}
         />
         {
           currentUser ? (

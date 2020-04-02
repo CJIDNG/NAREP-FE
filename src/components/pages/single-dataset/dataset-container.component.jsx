@@ -1,11 +1,13 @@
 import React from 'react';
 import DatasetPage from './dataset-component';
-import ActionButtons from './dataset-cta.component';
+import EditDataset from './edit-dataset/dataset-edit.component';
+import DeleteDataset from './delete-dataset/dataset-delete.component';
 
 const DatasetContainer = ({ ...singleDataset }) => (
   <div className="flex justify-center">
     <DatasetPage {...singleDataset} />
-    <ActionButtons {...singleDataset} />
+    <EditDataset {...singleDataset} />
+    <DeleteDataset {...singleDataset} />
   </div>
 );
 

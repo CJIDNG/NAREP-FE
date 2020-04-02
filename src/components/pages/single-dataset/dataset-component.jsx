@@ -6,8 +6,8 @@ import FileIcon from '@Atoms/Icons//file.icon';
 import DownloadIcon from '@Atoms/Icons//download.icon';
 import TagIcon from '@Atoms/Icons/tag.icon';
 import { handleDateFormat } from '@Utils/helpers/handleDateFormat';
-import DownloadDataset from './dataset-download.component';
-import SocialShare from './social-share.component';
+import DownloadDataset from '../../UI/atoms/dataset-download/dataset-download.component';
+import SocialShare from '../../UI/atoms/social-share/social-share.component';
 import { TagStyle } from './dataset-component.styles';
 
 const DatasetPage = ({
