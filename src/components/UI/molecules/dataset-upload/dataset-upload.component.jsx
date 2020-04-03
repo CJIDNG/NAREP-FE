@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { Button } from 'semantic-ui-react';
+import DataUploadModal from '@Components/UI/atoms/modal/edit-modal.component';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { createDatasetStarted } from '@Redux/datasets/create-dataset/create-dataset.actions';
-import DatasetModal from '@Components/UI/atoms/modal/edit-modal.component';
+import { updateDatasetStarted } from '@Redux/datasets/update-dataset/update-dataset.actions';
 
-const CreateDataset = ({ createDataset }) => {
+const DataUpload = ({
+  title: defaultTitle = '', description: defaultDesc = '', onFormSubmit, trigger
+}) => {
   const [fileCredentials, setFileCredentials] = useState({
-    title: '',
-    description: '',
+    title: defaultTitle,
+    description: defaultDesc,
     sector: '',
     file: null,
     tags: []
@@ -35,24 +36,31 @@ const CreateDataset = ({ createDataset }) => {
     formData.append('description', description);
     formData.append('sector', sector);
     formData.append('tags', tags);
-    await createDataset(formData);
+    await onFormSubmit(formData);
   };
   return (
-    <DatasetModal
+    <DataUploadModal
       handleChange={handleChange}
       handleSubmit={handleSubmit}
       title={title}
       description={description}
       onChangeHandler={onChangeHandler}
       selectedTags={selectedTags}
-      trigger={<Button>Create Dataset</Button>}
+      trigger={trigger}
     />
   );
 };
-CreateDataset.propTypes = {
-  createDataset: PropTypes.func.isRequired,
+DataUpload.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  onFormSubmit: PropTypes.func.isRequired,
+  trigger: PropTypes.shape({}).isRequired,
+};
+DataUpload.defaultProps = {
+  title: '',
+  description: '',
 };
 const mapDispatchToProps = (dispatch) => ({
-  createDataset: (payload) => dispatch(createDatasetStarted(payload))
+  updateDataset: (payload) => dispatch(updateDatasetStarted(payload))
 });
-export default connect(null, mapDispatchToProps)(CreateDataset);
+export default connect(null, mapDispatchToProps)(DataUpload);

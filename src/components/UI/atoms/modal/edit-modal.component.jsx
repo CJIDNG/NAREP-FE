@@ -7,7 +7,7 @@ import AuthButton from '@Components/UI/atoms/custom-button/auth-button.component
 import { Title } from '@Atoms/form-input/component.styles';
 import FormFile from '@Atoms/form-input/form-file.component';
 import Select from '@Atoms/form-input/form-select.component';
-import TagsInput from '@Molecules/create-dataset/create-tags.component';
+import TagsInput from '@Components/UI/organisms/create-dataset/create-tags.component';
 
 const DatasetModal = ({
   handleSubmit, title, handleChange, description, onChangeHandler, selectedTags, trigger
