@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Input } from 'semantic-ui-react';
 import { createStructuredSelector } from 'reselect';
 import DataSetCollection from '@Molecules/datasets-collection/datasets-collection.component';
 import DatasetFilter from '@Molecules/datasets-filter/datasets-filter.component';
 import { selectItemsCount } from '@Redux/datasets/get-datasets/datasets.selectors';
 import { selectCurrentUser } from '@Redux/user/user.selectors';
 import CreateDataset from '@Components/UI/organisms/create-dataset/create-dataset.component';
+import SearchBar from '@Atoms/search-bar/search-bar.component';
+import { searchDatasetStarted } from '@Redux/datasets/search-dataset/search-dataset.actions';
 
-
-const DatasetContainer = ({ collectionsCount, currentUser }) => {
+const DatasetContainer = ({ collectionsCount, currentUser, searchDataset }) => {
   const role = currentUser ? currentUser.role : null;
+
+  const search = async (searchKey) => {
+    await searchDataset(searchKey);
+  };
   return (
     <>
       <div className="flex mb-4 justify-center">
@@ -27,7 +31,7 @@ const DatasetContainer = ({ collectionsCount, currentUser }) => {
                 </div>
               ) : ''
             }
-            <Input icon="search" placeholder={`Search ${collectionsCount} datasets`} />
+            <SearchBar collectionsCount={collectionsCount} search={search} />
             <div className="m-3">
               <span className="mr-3">
                 { collectionsCount }
@@ -47,6 +51,7 @@ DatasetContainer.propTypes = {
   currentUser: PropTypes.shape({
     role: PropTypes.string
   }),
+  searchDataset: PropTypes.func.isRequired,
 };
 DatasetContainer.defaultProps = {
   currentUser: null
@@ -55,4 +60,7 @@ const mapStateToProps = createStructuredSelector({
   collectionsCount: selectItemsCount,
   currentUser: selectCurrentUser
 });
-export default connect(mapStateToProps)(DatasetContainer);
+const mapDispatchToProps = (dispatch) => ({
+  searchDataset: (page, sectorId) => dispatch(searchDatasetStarted(page, sectorId))
+});
+export default connect(mapStateToProps, mapDispatchToProps)(DatasetContainer);

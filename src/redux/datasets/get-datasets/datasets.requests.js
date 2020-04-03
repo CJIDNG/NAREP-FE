@@ -29,4 +29,12 @@ export default {
       return error.response;
     }
   },
+  searchDataset: async (searchKey) => {
+    try {
+      const response = await API_SERVICE.get(`/files/search?searchKey=${searchKey}`);
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  },
 };

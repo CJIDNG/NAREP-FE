@@ -42,3 +42,16 @@ export const fetchSingleDatasetFailed = (error) => ({
   type: DataSetsActionTypes.FETCH_DATASET_FAILED,
   payload: error
 });
+
+export const searchDatasetStarted = (payload) => ({
+  type: DataSetsActionTypes.SEARCH_DATASET_STARTED,
+  payload
+});
+export const searchDatasetSucceeded = (datasets) => ({
+  type: DataSetsActionTypes.SEARCH_DATASET_SUCCEEDED,
+  payload: datasets
+});
+export const searchDatasetFailed = (error) => ({
+  type: DataSetsActionTypes.SEARCH_DATASET_FAILED,
+  payload: error
+});
