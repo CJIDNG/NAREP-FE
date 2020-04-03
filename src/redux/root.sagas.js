@@ -11,6 +11,6 @@ export default function* rootSaga() {
     call(datasetsSagas),
     call(createDatasetSagas),
     call(updateDatasetSagas),
-    call(deleteDatasetSagas)
+    call(deleteDatasetSagas),
   ]);
 }

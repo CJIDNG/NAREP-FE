@@ -4,7 +4,8 @@ import {
 import API_REQUEST from './datasets.requests';
 import DataSetsActionTypes from './datasets.types';
 import {
-  fetchDatasetsFailed, fetchDatasetsSucceeded, fetchSectorsFailed, fetchSectorsSucceeded, fetchSingleDatasetSucceeded, fetchSingleDatasetFailed
+  fetchDatasetsFailed, fetchDatasetsSucceeded, fetchSectorsFailed, fetchSectorsSucceeded, fetchSingleDatasetSucceeded, fetchSingleDatasetFailed,
+  searchDatasetFailed, searchDatasetSucceeded
 } from './datasets.actions';
 
 
@@ -51,6 +52,20 @@ export function* fetchDatasetsBySlug({ payload: slug }) {
     yield put(fetchSingleDatasetFailed(error.data.errors.message));
   }
 }
+export function* searchDataset({ payload: searchKey }) {
+  try {
+    const response = yield call(API_REQUEST.searchDataset, searchKey);
+    yield put(searchDatasetSucceeded(response.data.files));
+    return;
+  } catch (error) {
+    yield put(searchDatasetFailed(error));
+  }
+}
+
+
+export function* onSearchDatasetsStart() {
+  yield takeLatest(DataSetsActionTypes.SEARCH_DATASET_STARTED, searchDataset);
+}
 export function* onFetchDatasetsStart() {
   yield takeLatest(DataSetsActionTypes.FETCH_ALL_DATASETS_STARTED, fetchDataset);
 }
@@ -66,5 +81,6 @@ export function* datasetsSagas() {
     call(onFetchDatasetsStart),
     call(onFetchSectorsStart),
     call(onFetchDatasetStart),
+    call(onSearchDatasetsStart),
   ]);
 }

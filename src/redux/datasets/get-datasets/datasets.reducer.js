@@ -19,6 +19,7 @@ const datasetsReducer = (state = INITIAL_STATE, { type, payload }) => {
         isLoading: true,
       };
     case DataSetsActionTypes.FETCH_ALL_DATASETS_SUCCEEDED:
+    case DataSetsActionTypes.SEARCH_DATASET_SUCCEEDED:
       return {
         ...state,
         datasets: payload.allFiles,
@@ -31,6 +32,7 @@ const datasetsReducer = (state = INITIAL_STATE, { type, payload }) => {
         sectors: payload,
         isLoading: false
       };
+
     case DataSetsActionTypes.FETCH_ALL_SECTORS_FAILED:
     case DataSetsActionTypes.FETCH_ALL_DATASETS_FAILED:
       return {
