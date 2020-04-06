@@ -18,7 +18,6 @@ export default {
     }
   },
   updateUser: async ({ email, role }) => {
-    console.log(email, role);
     try {
       const response = await API_SERVICE.patch(`/admin/user/${email}`, role);
       return response;

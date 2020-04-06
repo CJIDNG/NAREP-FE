@@ -11,7 +11,6 @@ const EditUser = ({ email, onFormSubmit }) => {
   const { role } = userRole;
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(event.target.name);
     setUserRole({ ...userRole, [name]: value });
   };
   const handleSubmit = async (event) => {
