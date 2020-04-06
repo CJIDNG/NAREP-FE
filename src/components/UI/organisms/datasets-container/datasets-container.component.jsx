@@ -8,7 +8,7 @@ import { selectItemsCount } from '@Redux/datasets/get-datasets/datasets.selector
 import { selectCurrentUser } from '@Redux/user/user.selectors';
 import CreateDataset from '@Components/UI/organisms/create-dataset/create-dataset.component';
 import SearchBar from '@Atoms/search-bar/search-bar.component';
-import { searchDatasetStarted } from '@Redux/datasets/search-dataset/search-dataset.actions';
+import { searchDatasetStarted } from '@Redux/datasets/get-datasets/datasets.actions';
 
 const DatasetContainer = ({ collectionsCount, currentUser, searchDataset }) => {
   const role = currentUser ? currentUser.role : null;

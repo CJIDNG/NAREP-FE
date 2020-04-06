@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import DataUploadModal from '@Components/UI/atoms/modal/edit-modal.component';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { updateDatasetStarted } from '@Redux/datasets/update-dataset/update-dataset.actions';
 
 const DataUpload = ({
   title: defaultTitle = '', description: defaultDesc = '', onFormSubmit, trigger
@@ -20,6 +18,7 @@ const DataUpload = ({
   } = fileCredentials;
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(event.target.name);
     setFileCredentials({ ...fileCredentials, [name]: value });
   };
   const selectedTags = (items) => {
@@ -60,7 +59,5 @@ DataUpload.defaultProps = {
   title: '',
   description: '',
 };
-const mapDispatchToProps = (dispatch) => ({
-  updateDataset: (payload) => dispatch(updateDatasetStarted(payload))
-});
-export default connect(null, mapDispatchToProps)(DataUpload);
+
+export default DataUpload;

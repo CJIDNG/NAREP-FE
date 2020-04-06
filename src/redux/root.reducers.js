@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import userReducer from './user/user.reducer';
 import datasetsReducer from './datasets/get-datasets/datasets.reducer';
 import singleDatasetReducer from './datasets/get-datasets/single-dataset.reducer';
+import adminReducer from './admin/admin.reducer';
 
 const persistConfig = {
   key: 'root',
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   datasets: datasetsReducer,
   singleDataset: singleDatasetReducer,
+  admin: adminReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);
