@@ -22,8 +22,8 @@ const API_SERVICE = {
     return http.post(endpoint, data);
   },
 
-  put(endpoint, data) {
-    return http.put(endpoint, data);
+  patch(endpoint, data) {
+    return http.patch(endpoint, data);
   },
 
   delete(endpoint) {

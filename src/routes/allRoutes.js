@@ -3,6 +3,7 @@ import SignInPage from '@Pages/signin/signin.component';
 import HomePage from '@Pages/home/home.component';
 import DataSetsPage from '@Pages/datasets/datasets.component';
 import SingleDataset from '@Pages/single-dataset/single-dataset.component';
+import AdminPage from '@Pages/admin/admin.component';
 
 export const UnauthenticatedRoutes = {
   default: [{
@@ -29,6 +30,11 @@ export const UnauthenticatedRoutes = {
     exact: true,
     path: '/datasets/:slug',
     component: SingleDataset
+  },
+  {
+    exact: true,
+    path: '/admin-dashboard',
+    component: AdminPage
   }
   ]
 };
