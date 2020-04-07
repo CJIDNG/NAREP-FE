@@ -8,13 +8,13 @@ import TagIcon from '@Atoms/Icons/tag.icon';
 import { handleDateFormat } from '@Utils/helpers/handleDateFormat';
 import DownloadDataset from '../../UI/atoms/dataset-download/dataset-download.component';
 import SocialShare from '../../UI/atoms/social-share/social-share.component';
-import { TagStyle } from './dataset-component.styles';
+import { TagStyle, Container } from './dataset-component.styles';
 
 const DatasetPage = ({
   title, user, updatedAt, createdAt, description, numberOfDownload, fileType, fileName, tags
 }) => (
     <>
-      <div className="w-2/5  mx-10 border border-gray-500 px-16 py-8">
+      <Container>
         <h4 className="text-gray-700 text-2xl capitalize font-semibold mb-6">{ title }</h4>
         <div className="my-5">
           <p className="text-gray-800 text-xl capitalize ">Metadata</p>
@@ -74,7 +74,7 @@ const DatasetPage = ({
         <DownloadDataset fileName={fileName} />
         <SocialShare title={title} />
 
-      </div>
+      </Container>
 
 
     </>

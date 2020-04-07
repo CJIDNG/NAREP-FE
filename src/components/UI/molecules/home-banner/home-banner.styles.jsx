@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
 
 export const HomeBannerContainer = styled.div`
  display:flex;
@@ -43,5 +43,29 @@ export const HomeBannerImage = styled.img`
   object-fit: cover;
   @media only screen and (max-width: 800px) {
  display:none;
+  }
+`;
+
+export const Button = styled(Link)`
+  height: 3.5rem;
+  letter-spacing: 0.5px;
+  padding: 0 3.5rem 0 3.5rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bolder;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  background-color: teal;
+  color: white;
+  border: none;
+  margin:5rem 0; 
+  line-height: 46px;
+  border-radius:10rem;
+width:100%;
+  &:hover {
+    background-color: white;
+    color: teal;
+    border: 1px solid teal;
   }
 `;

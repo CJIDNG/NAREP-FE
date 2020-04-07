@@ -1,9 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
-
-const subColor = 'grey';
-
 const SpanStyle = css`
   padding-top:30px;
   font-size:1rem;
@@ -17,16 +14,21 @@ export const Title = styled.h2`
   margin: 10px 0;
   text-align:center;
   font-size:1.5rem;
-  color:${subColor};
+  color:teal;
+  font-weight:700;
 `;
 export const FormContainer = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width:30%;
+  width:40rem;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  padding:30px;
+  padding:3rem 5rem;
   margin: auto;
+
+  @media only screen and (max-width: 800px) {
+width: auto;
+    }
 `;
 export const InputErrors = styled.span`
   color:red;
@@ -38,6 +40,6 @@ export const ToSignin = styled.span`
 `;
 
 export const LinkToSignin = styled(Link)`
- color: #27AE60;
+ color: teal;
  margin-left:5px;
 `;

@@ -9,6 +9,7 @@ import { selectCurrentUser } from '@Redux/user/user.selectors';
 import CreateDataset from '@Components/UI/organisms/create-dataset/create-dataset.component';
 import SearchBar from '@Atoms/search-bar/search-bar.component';
 import { searchDatasetStarted } from '@Redux/datasets/get-datasets/datasets.actions';
+import { DatasetFilterContainer, Container } from './datasets-container.styles';
 
 const DatasetContainer = ({ collectionsCount, currentUser, searchDataset }) => {
   const role = currentUser ? currentUser.role : null;
@@ -18,10 +19,10 @@ const DatasetContainer = ({ collectionsCount, currentUser, searchDataset }) => {
   };
   return (
     <>
-      <div className="flex mb-4 justify-center">
-        <div className="w-auto p-2 m-4">
+      <Container>
+        <DatasetFilterContainer>
           <DatasetFilter />
-        </div>
+        </DatasetFilterContainer>
         <div className="w-1/2 p-2 m-4">
           <div className="flex flex-col">
             {
@@ -42,7 +43,7 @@ const DatasetContainer = ({ collectionsCount, currentUser, searchDataset }) => {
           </div>
           <div />
         </div>
-      </div>
+      </Container>
     </>
   );
 };

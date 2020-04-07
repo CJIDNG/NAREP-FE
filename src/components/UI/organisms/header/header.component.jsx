@@ -11,6 +11,14 @@ import { Container } from './header.styles';
 
 const Header = ({ currentUser, signOutStart: logOutUser }) => {
   const role = currentUser ? currentUser.role : null;
+  const menuStyles = {
+    color: '#fff',
+    fontSize: '1.2rem'
+  };
+  const authStyles = {
+    background: 'white',
+    color: '#000',
+  };
   return (
     <>
       <Container>
@@ -19,14 +27,17 @@ const Header = ({ currentUser, signOutStart: logOutUser }) => {
             name="home"
             as={Link}
             to="/"
+            style={menuStyles}
           />
           <Menu.Item
             name="datasets"
             as={Link}
             to="/datasets"
+            style={menuStyles}
           />
           <Menu.Item
             name="developers"
+            style={menuStyles}
           // onClick={() => window.open('https://github.com/CJIDNG/NAREP-BE')}
           />
           {
@@ -35,6 +46,7 @@ const Header = ({ currentUser, signOutStart: logOutUser }) => {
                 name="Admin Dashboard"
                 as={Link}
                 to="/admin-dashboard"
+                style={authStyles}
               />
             ) : ''
           }
@@ -46,6 +58,7 @@ const Header = ({ currentUser, signOutStart: logOutUser }) => {
                   as={Link}
                   to="/logout"
                   onClick={logOutUser}
+                  style={authStyles}
 
                 />
               </Menu.Menu>
@@ -55,13 +68,14 @@ const Header = ({ currentUser, signOutStart: logOutUser }) => {
                     name="signin"
                     as={Link}
                     to="/signin"
+                    style={menuStyles}
 
                   />
                   <Menu.Item
                     name="register"
                     as={Link}
                     to="/signup"
-                    color="red"
+                    style={authStyles}
 
                   />
                 </Menu.Menu>

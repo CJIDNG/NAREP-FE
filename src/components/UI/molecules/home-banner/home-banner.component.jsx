@@ -1,7 +1,6 @@
 import React from 'react';
-import CustomButton from '@Components/UI/atoms/custom-button/auth-button.component';
 import {
-  HomeBannerImage, HomeBannerContainer, HomeBannerText, HomeBannerTextContainer
+  HomeBannerImage, HomeBannerContainer, HomeBannerText, HomeBannerTextContainer, Button
 } from './home-banner.styles';
 
 const HomeBanner = () => (
@@ -13,7 +12,10 @@ const HomeBanner = () => (
         harum tempore provident natus consequuntur ab cumque sunt ad, doloremque eum
         reprehenderit laboriosam.
       </HomeBannerText>
-      <CustomButton>Register with email</CustomButton>
+
+      <Button to="/signup">
+        Register with email
+      </Button>
     </HomeBannerTextContainer>
     <HomeBannerImage
       src={`${process.env.PUBLIC_URL}/img/home-banner.jpg`}

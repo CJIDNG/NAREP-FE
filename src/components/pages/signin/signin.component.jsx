@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { requestLogin } from '@Redux/user/user.action';
-import { createStructuredSelector } from 'reselect';
-import { seclectAuthError } from '@Redux/user/user.selectors';
 import Validator from '@Utils/validator';
 import FormInput from '@Atoms/form-input/form-input.component';
 import AuthButton from '@Components/UI/atoms/custom-button/auth-button.component';
@@ -15,7 +12,7 @@ import {
 
 
 const SignIn = ({
-  requestLogin: loginCurrentUser, history,
+  requestLogin: loginCurrentUser
 }) => {
   const [userCredentials, setUserCredentials] = useState({
     email: '',
@@ -85,18 +82,15 @@ const SignIn = ({
 };
 SignIn.propTypes = {
   requestLogin: PropTypes.func.isRequired,
-  currentUser: PropTypes.shape({}),
-  history: PropTypes.shape({}).isRequired,
+  currentUser: PropTypes.shape({})
 
 };
 SignIn.defaultProps = {
   currentUser: PropTypes.null
 };
-const mapStateToProps = createStructuredSelector({
-  authError: seclectAuthError,
-});
+
 const mapDispatchToProps = (dispatch) => ({
   requestLogin: (payload) => dispatch(requestLogin(payload))
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignIn));
+export default connect(null, mapDispatchToProps)(SignIn);

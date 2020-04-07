@@ -17,6 +17,9 @@ const SearchBar = ({ collectionsCount, search }) => {
     search(searchValue);
     resetInputField();
   };
+  const style = {
+    width: '30rem'
+  };
   return (
     <Input
       icon="search"
@@ -24,6 +27,7 @@ const SearchBar = ({ collectionsCount, search }) => {
       placeholder={`Search ${collectionsCount} datasets`}
       onChange={handleChange}
       onKeyDown={(event) => event.key === 'Enter' ? handleSearchSubmit(event) : null}
+      style={style}
     />
   );
 };

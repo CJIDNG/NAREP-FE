@@ -4,6 +4,7 @@ import HomePage from '@Pages/home/home.component';
 import DataSetsPage from '@Pages/datasets/datasets.component';
 import SingleDataset from '@Pages/single-dataset/single-dataset.component';
 import AdminPage from '@Pages/admin/admin.component';
+import PageNotFound from '@Pages/page-not-found/404.component';
 
 export const UnauthenticatedRoutes = {
   default: [{
@@ -35,6 +36,11 @@ export const UnauthenticatedRoutes = {
     exact: true,
     path: '/admin-dashboard',
     component: AdminPage
+  },
+  {
+    exact: true,
+    path: '/404',
+    component: PageNotFound
   }
   ]
 };

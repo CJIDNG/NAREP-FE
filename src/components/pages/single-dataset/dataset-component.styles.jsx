@@ -5,3 +5,15 @@ export const TagStyle = styled.span`
   content: ", ";
 }
 `;
+
+export const Container = styled.div`
+width: 40%;
+padding: 2rem;
+margin: 0  auto;
+border: 1px solid #a0aec0;;
+ @media only screen and (max-width: 800px) {
+display:block;
+width:35rem;
+/* margin:0  auto; */
+    }
+`;
