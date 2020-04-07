@@ -22,6 +22,11 @@ const adminReducer = (state = INITIAL_STATE, { type, payload }) => {
         users: payload.allUsers,
         isLoading: false
       };
+    case AdminActionTypes.UPDATE_USER_SUCCEEDED:
+      return {
+        ...state,
+        isLoading: false
+      };
     case AdminActionTypes.FETCH_ALL_USERS_FAILED:
     case AdminActionTypes.UPDATE_USER_FAILED:
     case AdminActionTypes.DELETE_USER_FAILED:

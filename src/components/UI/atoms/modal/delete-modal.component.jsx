@@ -16,7 +16,7 @@ const DeleteModal = ({ handleDelete }) => {
     <>
       <button
         type="button"
-        className="h-10 px-8 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-6"
+        className="h-10 px-8 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded m-5"
         onClick={closeConfigShow(true, false)}
       >
         Delete

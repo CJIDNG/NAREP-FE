@@ -28,7 +28,10 @@ export const updateUserStarted = (payload) => ({
   type: AdminActionTypes.UPDATE_USER_STARTED,
   payload
 });
-
+export const updateUserSucceeded = (user) => ({
+  type: AdminActionTypes.UPDATE_USER_SUCCEEDED,
+  payload: user
+});
 export const updateUserFailed = (error) => ({
   type: AdminActionTypes.UPDATE_USER_FAILED,
   payload: error

@@ -20,7 +20,7 @@ const PageNotFound = ({ history }) => {
           <p>We couldn’t find your page</p>
           <button
             type="button"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 uppercase"
+            className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded mt-4 uppercase"
             onClick={handleRedirect}
           >
             Back to homepage

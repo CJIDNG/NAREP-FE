@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 import { selectSectors } from '@Redux/datasets/get-datasets/datasets.selectors';
+import LazyLoad from 'react-lazyload';
 import {
   DirectoryMenuContainer,
   SectorItemContainer,
@@ -18,14 +19,15 @@ const HomePageSector = ({ sectors }) => {
       {
         sectors.map(({ id, name }) => (
           <SectorItemContainer to={`/datasets?sectorId=${id}`} key={id}>
-            <BackgroundImageContainer
-              className="background-image"
-              imageUrl={`${process.env.PUBLIC_URL}/img/sector-${handleImage(name)}.jpg`}
-            />
-            <ContentContainer className="content">
-              <ContentTitle>{ name.toUpperCase() }</ContentTitle>
-            </ContentContainer>
-
+            <LazyLoad>
+              <BackgroundImageContainer
+                className="background-image"
+                imageUrl={`${process.env.PUBLIC_URL}/img/sector-${handleImage(name)}.jpg`}
+              />
+              <ContentContainer className="content">
+                <ContentTitle>{ name.toUpperCase() }</ContentTitle>
+              </ContentContainer>
+            </LazyLoad>
           </SectorItemContainer>
         ))
       }

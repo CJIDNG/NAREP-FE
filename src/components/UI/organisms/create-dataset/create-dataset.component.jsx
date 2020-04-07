@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createDatasetStarted } from '@Redux/datasets/create-dataset/create-dataset.actions';
@@ -10,7 +9,14 @@ const CreateDataset = ({ createDataset }) => {
   return (
     <BaseDataset
       onFormSubmit={createNewDataset}
-      trigger={<Button>Create Dataset</Button>}
+      trigger={(
+        <button
+          type="button"
+          className="px-8 bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Create New Dataset
+        </button>
+      )}
     />
   );
 };

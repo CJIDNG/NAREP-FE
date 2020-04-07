@@ -3,7 +3,7 @@ const express = require('express');
 const Debug = require('debug');
 
 const app = express();
-const debug = Debug('dev');
+const debug = Debug(process.env.REACT_APP_DEBUG);
 
 app.use(express.static(path.resolve(__dirname, 'build')));
 

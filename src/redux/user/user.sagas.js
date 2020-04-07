@@ -51,7 +51,7 @@ export function* userSignout() {
   try {
     localStorage.removeItem('jwtToken');
     yield put(signOutSuccess());
-    window.location.reload();
+    window.location.href = '/';
   } catch (error) {
     yield put(signOutFailure(error));
   }

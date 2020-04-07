@@ -27,7 +27,7 @@ const DatasetContainer = ({ collectionsCount, currentUser, searchDataset }) => {
           <div className="flex flex-col">
             {
               role === 'admin' ? (
-                <div className="w-1/4 m-4 ">
+                <div className="m-4 ">
                   <CreateDataset />
                 </div>
               ) : ''

@@ -1,11 +1,13 @@
-import SignUpPage from '@Pages/signup/signup.component';
-import SignInPage from '@Pages/signin/signin.component';
-import HomePage from '@Pages/home/home.component';
-import DataSetsPage from '@Pages/datasets/datasets.component';
-import SingleDataset from '@Pages/single-dataset/single-dataset.component';
-import AdminPage from '@Pages/admin/admin.component';
-import PageNotFound from '@Pages/page-not-found/404.component';
+import { lazy } from 'react';
+// import PageNotFound from '@Pages/page-not-found/404.component';
 
+const HomePage = lazy(() => import('@Pages/home/home.component'));
+const DataSetsPage = lazy(() => import('@Pages/datasets/datasets.component'));
+const SingleDataset = lazy(() => import('@Pages/single-dataset/single-dataset.component'));
+const AdminPage = lazy(() => import('@Pages/admin/admin.component'));
+const SignUpPage = lazy(() => import('@Pages/signup/signup.component'));
+const SignInPage = lazy(() => import('@Pages/signin/signin.component'));
+const PageNotFound = lazy(() => import('@Pages/page-not-found/404.component'));
 export const UnauthenticatedRoutes = {
   default: [{
     exact: true,
@@ -38,8 +40,6 @@ export const UnauthenticatedRoutes = {
     component: AdminPage
   },
   {
-    exact: true,
-    path: '/404',
     component: PageNotFound
   }
   ]

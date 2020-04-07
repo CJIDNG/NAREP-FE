@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import API_REQUEST from './admin.requests';
 import AdminActionTypes from './admin.types';
 import {
-  fetchUsersFailed, fetchUsersSucceeded, deleteUserFailed, updateUserFailed
+  fetchUsersFailed, fetchUsersSucceeded, deleteUserFailed, updateUserFailed, updateUserSucceeded
 } from './admin.actions';
 
 
@@ -27,7 +27,7 @@ export function* deleteUser(action) {
         toast.error(errors.message, { autoClose: 5000 });
         return false;
       case 200:
-        toast.success('File deleted successfully', { autoClose: 5000 });
+        toast.success('User deleted successfully', { autoClose: 5000 });
         window.location.reload();
         return;
 
@@ -51,8 +51,8 @@ export function* updateUser(action) {
         Object.values(errors).map((eachError) => toast.error(eachError, { autoClose: 5000 }));
         return false;
       case 200:
-        toast.success('File updated successfully', { autoClose: 5000 });
-        window.location.reload();
+        yield put(updateUserSucceeded(response.data));
+        toast.success('User updated successfully', { autoClose: 5000 });
         return;
 
       default:

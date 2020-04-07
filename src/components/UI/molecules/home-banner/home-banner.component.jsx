@@ -1,4 +1,5 @@
 import React from 'react';
+import LazyLoad from 'react-lazyload';
 import {
   HomeBannerImage, HomeBannerContainer, HomeBannerText, HomeBannerTextContainer, Button
 } from './home-banner.styles';
@@ -17,11 +18,13 @@ const HomeBanner = () => (
         Register with email
       </Button>
     </HomeBannerTextContainer>
-    <HomeBannerImage
-      src={`${process.env.PUBLIC_URL}/img/home-banner.jpg`}
-      alt="Credit: Markus Spiske"
-      title="Credit: Markus Spiske"
-    />
+    <LazyLoad>
+      <HomeBannerImage
+        src={`${process.env.PUBLIC_URL}/img/home-banner.jpg`}
+        alt="Credit: Markus Spiske"
+        title="Credit: Markus Spiske"
+      />
+    </LazyLoad>
   </HomeBannerContainer>
 );
 export default HomeBanner;
