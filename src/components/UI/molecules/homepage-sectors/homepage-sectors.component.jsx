@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 import { selectSectors } from '@Redux/datasets/get-datasets/datasets.selectors';
 import LazyLoad from 'react-lazyload';
+import { fetchSectorsStarted } from '@Redux/datasets/get-datasets/datasets.actions';
 import {
   DirectoryMenuContainer,
   SectorItemContainer,
@@ -12,7 +13,13 @@ import {
   ContentTitle,
 } from './homepage-sectors.styles';
 
-const HomePageSector = ({ sectors }) => {
+const HomePageSector = ({ fetchSectorsStarted: getAllSectors, sectors }) => {
+  useEffect(() => {
+    const fetchSectors = async () => {
+      await getAllSectors();
+    };
+    fetchSectors();
+  }, [getAllSectors]);
   const handleImage = (name) => name.split(' ').join('-');
   return (
     <DirectoryMenuContainer>
@@ -36,9 +43,13 @@ const HomePageSector = ({ sectors }) => {
 };
 HomePageSector.propTypes = {
   sectors: PropTypes.array.isRequired,
+  fetchSectorsStarted: PropTypes.func.isRequired,
 };
 const mapStateToProps = createStructuredSelector({
   sectors: selectSectors
 });
+const mapDispatchToProps = (dispatch) => ({
+  fetchSectorsStarted: () => dispatch(fetchSectorsStarted())
+});
 
-export default connect(mapStateToProps)(HomePageSector);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePageSector);

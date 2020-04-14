@@ -38,21 +38,35 @@ const Header = ({ currentUser, signOutStart: logOutUser }) => {
           <Menu.Item
             name="developers"
             style={menuStyles}
-          // onClick={() => window.open('https://github.com/CJIDNG/NAREP-BE')}
+            onClick={() => window.open('https://github.com/CJIDNG/NAREP-BE')}
+
           />
-          {
-            role === 'admin' ? (
-              <Menu.Item
-                name="Admin Dashboard"
-                as={Link}
-                to="/admin-dashboard"
-                style={authStyles}
-              />
-            ) : ''
-          }
+          <Menu.Item
+            name="FAAC Facts"
+            style={menuStyles}
+            onClick={() => window.open('https://faacfacts.ptcij.org/')}
+          />
+          <Menu.Item
+            name="blog"
+            as={Link}
+            style={menuStyles}
+            to="/blog"
+          />
+
           {
             currentUser ? (
               <Menu.Menu position="right">
+                {
+                  role === 'admin' ? (
+                    <Menu.Item
+                      name="Admin Dashboard"
+                      as={Link}
+                      to="/admin-dashboard"
+                      style={authStyles}
+                    />
+                  ) : ''
+                }
+
                 <Menu.Item
                   name="logout"
                   as={Link}
