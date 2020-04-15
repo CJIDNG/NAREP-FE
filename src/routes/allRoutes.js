@@ -7,7 +7,9 @@ const SingleDataset = lazy(() => import('@Pages/single-dataset/single-dataset.co
 const AdminPage = lazy(() => import('@Pages/admin/admin.component'));
 const SignUpPage = lazy(() => import('@Pages/signup/signup.component'));
 const SignInPage = lazy(() => import('@Pages/signin/signin.component'));
+const PolicyPaperPage = lazy(() => import('@Pages/policy-papers/policy-papers.component'));
 const PageNotFound = lazy(() => import('@Pages/page-not-found/404.component'));
+
 export const UnauthenticatedRoutes = {
   default: [{
     exact: true,
@@ -38,6 +40,11 @@ export const UnauthenticatedRoutes = {
     exact: true,
     path: '/admin-dashboard',
     component: AdminPage
+  },
+  {
+    exact: true,
+    path: '/policy-papers',
+    component: PolicyPaperPage
   },
   {
     component: PageNotFound

@@ -6,7 +6,7 @@ import DataSetCollection from '@Molecules/datasets-collection/datasets-collectio
 import DatasetFilter from '@Molecules/datasets-filter/datasets-filter.component';
 import { selectItemsCount } from '@Redux/datasets/get-datasets/datasets.selectors';
 import { selectCurrentUser } from '@Redux/user/user.selectors';
-import CreateDataset from '@Components/UI/organisms/create-dataset/create-dataset.component';
+import CreateDataset from '@Components/UI/molecules/create-dataset/create-dataset.component';
 import SearchBar from '@Atoms/search-bar/search-bar.component';
 import { searchDatasetStarted } from '@Redux/datasets/get-datasets/datasets.actions';
 import { DatasetFilterContainer, Container } from './datasets-container.styles';

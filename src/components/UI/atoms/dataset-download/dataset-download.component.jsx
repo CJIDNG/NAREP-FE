@@ -5,14 +5,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-const DownloadFile = ({ fileName, currentUser, history }) => {
+const DownloadFile = ({
+  fileId, currentUser, history, path
+}) => {
   const handleDownload = async (event) => {
     event.preventDefault();
     if (!currentUser) {
       history.push('/signup');
       return false;
     }
-    window.open(`${process.env.REACT_APP_API_ROUTE}/files/downloads?filename=${fileName}`);
+    window.open(`${process.env.REACT_APP_API_ROUTE}/${path}/downloads?id=${fileId}`);
   };
   return (
     <>
@@ -33,7 +35,8 @@ DownloadFile.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func
   }).isRequired,
-  fileName: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+  fileId: PropTypes.string.isRequired,
 };
 DownloadFile.defaultProps = {
   currentUser: null

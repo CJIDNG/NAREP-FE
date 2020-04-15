@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import FormInput from '@Atoms/form-input/form-input.component';
 import AuthButton from '@Components/UI/atoms/custom-button/auth-button.component';
 import SignupValidation from '@Utils/validations/auth.validations';
@@ -10,7 +11,7 @@ import {
   Container, Title, FormContainer, InputErrors, ToSignin, LinkToSignin
 } from '@Atoms/form-input/component.styles';
 
-const SignUp = ({ signUpStart: createUserRequest }) => {
+const SignUp = ({ signUpStart: createUserRequest, history }) => {
   const [userCredentials, setUserCredentials] = useState({
     username: '',
     email: '',
@@ -48,6 +49,7 @@ const SignUp = ({ signUpStart: createUserRequest }) => {
       await createUserRequest({
         username, email, password, confirmPassword
       });
+      history.push('/');
     }
     return false;
   };
@@ -106,8 +108,11 @@ const SignUp = ({ signUpStart: createUserRequest }) => {
 };
 SignUp.propTypes = {
   signUpStart: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func
+  }).isRequired,
 };
 const mapDispatchToProps = (dispatch) => ({
   signUpStart: (userCredentials) => dispatch(signUpStart(userCredentials))
 });
-export default connect(null, mapDispatchToProps)(SignUp);
+export default withRouter(connect(null, mapDispatchToProps)(SignUp));

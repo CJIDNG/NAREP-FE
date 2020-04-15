@@ -47,6 +47,12 @@ const Header = ({ currentUser, signOutStart: logOutUser }) => {
             onClick={() => window.open('https://faacfacts.ptcij.org/')}
           />
           <Menu.Item
+            name="Policy Papers"
+            style={menuStyles}
+            as={Link}
+            to="/policy-papers"
+          />
+          <Menu.Item
             name="blog"
             as={Link}
             style={menuStyles}

@@ -6,12 +6,12 @@ import FileIcon from '@Atoms/Icons//file.icon';
 import DownloadIcon from '@Atoms/Icons//download.icon';
 import TagIcon from '@Atoms/Icons/tag.icon';
 import { handleDateFormat } from '@Utils/helpers/handleDateFormat';
-import DownloadDataset from '../../UI/atoms/dataset-download/dataset-download.component';
-import SocialShare from '../../UI/atoms/social-share/social-share.component';
+import DownloadDataset from '@Atoms/dataset-download/dataset-download.component';
+import SocialShare from '@Atoms/social-share/social-share.component';
 import { TagStyle, Container } from './dataset-component.styles';
 
 const DatasetPage = ({
-  title, user, updatedAt, createdAt, description, numberOfDownload, fileType, fileName, tags
+  id: fileId, title, user, updatedAt, createdAt, description, numberOfDownload, fileType, tags
 }) => (
     <>
       <Container>
@@ -71,7 +71,7 @@ const DatasetPage = ({
           <p className="text-gray-800 text-lg capitalize font-semibold">Description</p>
           <p>{ description }</p>
         </div>
-        <DownloadDataset fileName={fileName} />
+        <DownloadDataset fileId={fileId} path="files" />
         <SocialShare title={title} />
 
       </Container>
@@ -85,7 +85,7 @@ DatasetPage.propTypes = {
     username: PropTypes.string,
   }).isRequired,
   updatedAt: PropTypes.string.isRequired,
-  fileName: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   numberOfDownload: PropTypes.number.isRequired,
