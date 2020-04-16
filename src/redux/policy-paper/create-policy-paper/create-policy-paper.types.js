@@ -1,5 +1,5 @@
-const DataSetsActionTypes = {
-  CREATE_DATASET_STARTED: 'CREATE_DATASET_STARTED',
-  CREATE_DATASET_FAILED: 'CREATE_DATASET_FAILED',
+const PolicyPaperActionTypes = {
+  CREATE_POLICY_PAPER_STARTED: 'CREATE_POLICY_PAPER_STARTED',
+  CREATE_POLICY_PAPER_FAILED: 'CREATE_POLICY_PAPER_FAILED',
 };
-export default DataSetsActionTypes;
+export default PolicyPaperActionTypes;

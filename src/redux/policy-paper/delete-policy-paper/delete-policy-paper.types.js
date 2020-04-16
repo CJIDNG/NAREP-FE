@@ -1,5 +1,5 @@
-const DataSetsActionTypes = {
+const PolicyPaperActionTypes = {
   DELETE_POLICY_PAPER_STARTED: 'DELETE_POLICY_PAPER_STARTED',
   DELETE_POLICY_PAPER_FAILED: 'DELETE_POLICY_PAPER_FAILED',
 };
-export default DataSetsActionTypes;
+export default PolicyPaperActionTypes;

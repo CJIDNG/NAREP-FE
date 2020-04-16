@@ -30,7 +30,7 @@ const DatasetContainer = ({ collectionsCount, currentUser, searchDataset }) => {
                 <div className="m-4 ">
                   <CreateDataset />
                 </div>
-              ) : ''
+              ) : null
             }
             <SearchBar collectionsCount={collectionsCount} search={search} />
             <div className="m-3">

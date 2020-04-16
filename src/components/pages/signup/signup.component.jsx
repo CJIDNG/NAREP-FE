@@ -49,7 +49,7 @@ const SignUp = ({ signUpStart: createUserRequest, history }) => {
       await createUserRequest({
         username, email, password, confirmPassword
       });
-      history.push('/');
+      history.push('/signin');
     }
     return false;
   };

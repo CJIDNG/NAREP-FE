@@ -3,13 +3,13 @@ import {
 } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 import API_REQUEST from './create-policy-paper.requests';
-import DataSetsActionTypes from './create-policy-paper.types';
-import { createDatasetFailed } from './create-policy-paper.actions';
+import PolicyPaperActionTypes from './create-policy-paper.types';
+import { createPolicyPaperFailed } from './create-policy-paper.actions';
 
 
-export function* createDataset({ payload }) {
+export function* createPolicyPaper({ payload }) {
   try {
-    const response = yield call(API_REQUEST.createDataset, payload);
+    const response = yield call(API_REQUEST.createPolicyPaper, payload);
     const { data: { errors } } = response;
     switch (response.status) {
       case 404:
@@ -28,15 +28,15 @@ export function* createDataset({ payload }) {
         return;
     }
   } catch (error) {
-    yield put(createDatasetFailed(error));
+    yield put(createPolicyPaperFailed(error));
   }
 }
-export function* onCreateDatasetsStart() {
-  yield takeLatest(DataSetsActionTypes.CREATE_DATASET_STARTED, createDataset);
+export function* onCreatePolicyPaperStart() {
+  yield takeLatest(PolicyPaperActionTypes.CREATE_POLICY_PAPER_STARTED, createPolicyPaper);
 }
 
-export function* createDatasetSagas() {
+export function* createPolicyPaperSagas() {
   yield all([
-    call(onCreateDatasetsStart),
+    call(onCreatePolicyPaperStart),
   ]);
 }
