@@ -6,6 +6,7 @@ import { updateDatasetSagas } from './datasets/update-dataset/update-dataset.sag
 import { deleteDatasetSagas } from './datasets/delete-dataset/delete-dataset.sagas';
 import { adminSagas } from './admin/admin.sagas';
 import { policyPaperSagas } from './policy-paper/get-policy-paper/policy-paper.sagas';
+import { deletePolicyPaperSagas } from './policy-paper/delete-policy-paper/delete-policy-paper.sagas';
 
 export default function* rootSaga() {
   yield all([
@@ -15,6 +16,7 @@ export default function* rootSaga() {
     call(updateDatasetSagas),
     call(deleteDatasetSagas),
     call(adminSagas),
-    call(policyPaperSagas)
+    call(policyPaperSagas),
+    call(deletePolicyPaperSagas)
   ]);
 }

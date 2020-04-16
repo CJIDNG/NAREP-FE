@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DataSetCollection from '@Molecules/policy-papers-collection/policy-papers-collection';
+import PolicyPaperCollection from '@Molecules/policy-papers-collection/policy-papers-collection';
 
 const PolicyPaperContainer = () => (
   <>
-    <DataSetCollection />
+    <PolicyPaperCollection />
   </>
 );
 PolicyPaperContainer.propTypes = {

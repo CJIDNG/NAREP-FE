@@ -1,23 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { deleteDatasetStarted } from '@Redux/datasets/delete-dataset/delete-dataset.actions';
 import DeleteModal from '@Atoms/modal/delete-modal.component';
 
-const DeleteDataset = ({ slug, deleteDataset }) => {
-  const handleDelete = async (event) => {
+const DeleteDataset = ({ slug, handleDelete }) => {
+  const deleteFile = async (event) => {
     event.preventDefault();
-    await deleteDataset({ slug });
+    await handleDelete({ slug });
   };
   return (
-    <DeleteModal handleDelete={handleDelete} />
+    <DeleteModal handleDelete={deleteFile} />
   );
 };
 DeleteDataset.propTypes = {
   slug: PropTypes.string.isRequired,
-  deleteDataset: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };
-const mapDispatchToProps = (dispatch) => ({
-  deleteDataset: (payload) => dispatch(deleteDatasetStarted(payload))
-});
-export default connect(null, mapDispatchToProps)(DeleteDataset);
+
+export default DeleteDataset;
