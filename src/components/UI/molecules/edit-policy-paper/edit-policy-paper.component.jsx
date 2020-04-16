@@ -1,32 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { updateDatasetStarted } from '@Redux/datasets/update-dataset/update-dataset.actions';
+import { updatePolicyPaperStarted } from '@Redux/policy-paper/update-policy-paper/update-policy-paper.actions';
 import EditModal from '@Molecules/dataset-upload/dataset-upload.component';
+import EditIcon from '@Atoms/Icons/edit.icon';
 
-const EditDataset = ({ updateDataset, slug, ...props }) => {
-  const update = async (formData) => updateDataset({ slug, formData });
+const EditPolicyPaper = ({ updatePolicyPaper, slug, ...props }) => {
+  const update = async (formData) => updatePolicyPaper({ slug, formData });
   return (
     <EditModal
       onFormSubmit={update}
       {...props}
-      trigger={(
-        <button
-          type="button"
-          className="h-10 px-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-5"
-        >
-          Edit
-</button>
-      )}
+      trigger={<EditIcon className="cursor-pointer" />}
+      type="policy-paper"
     />
   );
 };
-EditDataset.propTypes = {
+EditPolicyPaper.propTypes = {
   slug: PropTypes.string.isRequired,
-  updateDataset: PropTypes.func.isRequired,
+  updatePolicyPaper: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  updateDataset: (payload) => dispatch(updateDatasetStarted(payload))
+  updatePolicyPaper: (payload) => dispatch(updatePolicyPaperStarted(payload))
 });
-export default connect(null, mapDispatchToProps)(EditDataset);
+export default connect(null, mapDispatchToProps)(EditPolicyPaper);

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import DeleteIcon from '@Atoms/Icons/delete.icon';
 
 const DeleteModal = ({ handleDelete }) => {
   const [state, setState] = useState({
@@ -14,14 +15,7 @@ const DeleteModal = ({ handleDelete }) => {
   const { open, closeOnEscape, closeOnDimmerClick } = state;
   return (
     <>
-      <button
-        type="button"
-        className="px-8 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-        onClick={closeConfigShow(true, false)}
-      >
-        Delete
-      </button>
-
+      <DeleteIcon className="cursor-pointer" onClick={closeConfigShow(true, false)} />
       <Modal
         open={open}
         closeOnEscape={closeOnEscape}

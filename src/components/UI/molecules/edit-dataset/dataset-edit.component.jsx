@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updateDatasetStarted } from '@Redux/datasets/update-dataset/update-dataset.actions';
 import EditModal from '@Molecules/dataset-upload/dataset-upload.component';
+import EditIcon from '@Atoms/Icons/edit.icon';
 
 const EditDataset = ({ updateDataset, slug, ...props }) => {
   const update = async (formData) => updateDataset({ slug, formData });
@@ -10,14 +11,8 @@ const EditDataset = ({ updateDataset, slug, ...props }) => {
     <EditModal
       onFormSubmit={update}
       {...props}
-      trigger={(
-        <button
-          type="button"
-          className="px-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Edit
-        </button>
-      )}
+      trigger={<EditIcon className="cursor-pointer" />}
+
     />
   );
 };

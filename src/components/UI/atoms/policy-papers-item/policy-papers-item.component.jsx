@@ -4,7 +4,7 @@ import { handleDateFormat } from '@Utils/helpers/handleDateFormat';
 import { connect } from 'react-redux';
 import { deletePolicyPaperStarted } from '@Redux/policy-paper/delete-policy-paper/delete-policy-paper.actions';
 import DownloadPolicyPaper from '@Atoms/dataset-download/dataset-download.component';
-import EditPolicyPaper from '@Molecules/edit-dataset/dataset-edit.component';
+import EditPolicyPaper from '@Molecules/edit-policy-paper/edit-policy-paper.component';
 import DeletePolicyPaper from '@Molecules/delete-dataset/dataset-delete.component';
 import { Container, Title, Item } from './policy-papers.styles';
 
