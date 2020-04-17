@@ -19,7 +19,7 @@ const Routes = () => (
     <Route exact path="/datasets/:slug" component={SingleDataset} />
     <Route exact path="/policy-papers" component={PolicyPaperPage} />
 
-    <ProtectedRoute component={AdminPage} />
+    <ProtectedRoute exact path="/admin-dashboard" component={AdminPage} />
 
     <Route component={PageNotFound} />
   </Switch>

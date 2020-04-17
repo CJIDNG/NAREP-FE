@@ -12,8 +12,22 @@ import {
 
 export function* signUpUser({ payload }) {
   try {
-    const authUser = yield call(API_REQUEST.signupUser, payload);
-    yield put(signUpSuccess(authUser));
+    const response = yield call(API_REQUEST.signupUser, payload);
+    const { data: { errors } } = response;
+    switch (response.status) {
+      case 409:
+        yield put({ type: UserActionTypes.LOGIN_RESET });
+        toast.error(errors.message, { autoClose: 5000 });
+        return false;
+      case 201:
+        yield put({ type: UserActionTypes.ERROR_RESET });
+        yield put(signUpSuccess(response));
+        yield put(push('/signin'));
+        return;
+      default:
+        yield put({ type: UserActionTypes.LOGIN_RESET });
+        return;
+    }
   } catch (error) {
     yield put(signUpFailure(error));
   }

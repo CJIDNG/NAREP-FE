@@ -27,7 +27,7 @@ ProtectedRoute.propTypes = {
   currentUser: PropTypes.shape({
     role: PropTypes.string
   }),
-  component: PropTypes.func.isRequired,
+  component: PropTypes.shape({}).isRequired,
 };
 ProtectedRoute.defaultProps = {
   currentUser: null

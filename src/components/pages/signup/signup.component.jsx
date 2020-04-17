@@ -49,7 +49,6 @@ const SignUp = ({ signUpStart: createUserRequest, history }) => {
       await createUserRequest({
         username, email, password, confirmPassword
       });
-      history.push('/signin');
     }
     return false;
   };
