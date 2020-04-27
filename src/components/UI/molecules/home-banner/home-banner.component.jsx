@@ -8,10 +8,10 @@ const HomeBanner = () => (
   <HomeBannerContainer>
     <HomeBannerTextContainer>
       <HomeBannerText>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        Necessitatibus, et fugiat. Dolore aspernatur dicta asperiores rem molestias
-        harum tempore provident natus consequuntur ab cumque sunt ad, doloremque eum
-        reprehenderit laboriosam.
+        NAREP is the  Natural Resource Program of the Premium Times Centre for Investigative Journalism.
+        It is designed to make data on the Natural Resource sector readily available for journalists,policy makers and
+        the government for policy, journalistic and research purposes.
+
       </HomeBannerText>
 
       <Button to="/signup">
